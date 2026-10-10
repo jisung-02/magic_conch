@@ -1,0 +1,49 @@
+마법의 소라고둥 · 데이터 형식
+
+이 앱은 파일을 외부 서버에 업로드하지 않고 브라우저의 IndexedDB에 저장합니다.
+최대 20MB / 2,000개 선택지. JSON 또는 정해진 SQLite 스키마만 지원합니다.
+임의의 DB 파일이나 다른 모델로 만든 벡터는 지원하지 않습니다.
+
+가장 간단한 JSON 예시 (임베딩 없이도 사용 가능):
+{
+  "records": [
+    {"id":"1","text":"새로운 도전 시작 용기","answer":"한 번 해봐!","tag":"시작"},
+    {"id":"2","text":"피곤 휴식 쉬고 싶어","answer":"오늘은 쉬어도 괜찮아."}
+  ]
+}
+text: 검색 기준 문장 또는 관련 키워드, 1~4,000자
+answer: 그대로 반환할 답변 문장, 1~2,000자
+id: 고유 문자열, 1~200자 (JSON에서 생략하면 자동 부여)
+tag: 화면에 표시할 분류 (선택)
+embedding: 384개의 유한한 숫자 배열 (선택, 영벡터 불가)
+
+임베딩을 포함한다면 최상위 metadata는 다음 설정과 정확히 일치해야 합니다.
+{
+  "model":"Xenova/multilingual-e5-small",
+  "revision":"761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+  "dimensions":384,
+  "pooling":"mean",
+  "normalize":true,
+  "query_prefix":"query: ",
+  "passage_prefix":"passage: "
+}
+임베딩을 만들 때 원문의 앞에 'passage: '를 붙입니다.
+질문은 'query: '를 붙여 임베딩합니다. 의미 검색은 cosine similarity입니다.
+
+SQLite 스키마:
+CREATE TABLE metadata (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+CREATE TABLE records (
+ id TEXT PRIMARY KEY,
+ text TEXT NOT NULL,
+ answer TEXT NOT NULL,
+ embedding BLOB
+);
+metadata의 value는 JSON 인코딩 문자열입니다 (예: dimensions → 384, model → "Xenova/multilingual-e5-small").
+embedding은 NULL 또는 little-endian Float32 384개 (총 1,536 bytes).
+SQLite 내보내기는 tag를 저장하지 않으므로 tag 보존에는 JSON을 사용하세요.
+앱에서 기본 선택지를 내보내면 바로 사용할 수 있는 샘플이 됩니다.
+
+의미 검색 모델은 최초 사용 시 인터넷에서 약 135MB 이상의 파일을 내려받습니다.
+브라우저 캐시를 사용할 수 있지만 완전한 오프라인 동작은 보장하지 않습니다.
+기본 모드는 키워드 검색이며, 일치하는 단어가 없으면 무작위 선택이라고 표시합니다.
+질문을 저장하지 않으며, 선택지는 브라우저 저장 공간에 남습니다.
