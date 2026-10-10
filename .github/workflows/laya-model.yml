@@ -1,0 +1,29 @@
+name: Export trained Laya browser model
+on:
+  workflow_dispatch:
+  push:
+    paths: ['scripts/export-laya-model.py', 'scripts/pack-laya.py', '.github/workflows/laya-model.yml']
+permissions:
+  contents: write
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      HF_HUB_DISABLE_XET: '1'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+      - run: pip install transformers==5.19.0 onnx==1.23.2 onnxruntime==1.31.0 onnxscript==0.7.2 safetensors==0.8.0 huggingface_hub==2.2.0 numpy==2.5.3 sentencepiece
+      - run: python scripts/export-laya-model.py
+      - name: Publish reusable licensed model asset
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view laya-model-packed-v1 >/dev/null 2>&1 || gh release create laya-model-packed-v1 --title "Laya multilingual lossless stored weights" --notes "Apache-2.0. Trained multilingual checkpoint e4e9ddf. Original FP32 ONNX export verified against PyTorch within 1e-4. Weights stored in FP16 with exact FP32 reconstruction asserted for every packed tensor; computations remain FP32. Derived format, not an official publisher ONNX release. Life advice quality and calibrated probabilities are not guaranteed." 
+          gh release upload laya-model-packed-v1 laya-multilingual-packed.zip --clobber
