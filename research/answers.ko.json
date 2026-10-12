@@ -1229,6 +1229,11 @@
       "id": "unknown",
       "text": "질문의 뜻을 조금만 더 알려 줘. 무엇을 할지 고민하는 거야?",
       "routing": "unclear_question"
+    },
+    {
+      "id": "external",
+      "text": "지금의 날씨나 영업시간은 소라가 확인할 수 없어. 공식 예보나 해당 장소의 최신 안내를 확인해 줘.",
+      "routing": "external_information"
     }
   ]
 }

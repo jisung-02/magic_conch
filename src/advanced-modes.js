@@ -1,4 +1,4 @@
-import {isBuiltin,lexicalRanks,denseRanks,candidatesFor,chooseCompatible} from './korean-retrieval.js';
+import {isBuiltin,lexicalRanks,denseRanks,candidatesFor,chooseCompatible,planBuiltinAnswer} from './korean-retrieval.js';
 import {lexicalSearch} from './data.js';
 const $=id=>document.getElementById(id);
 export function attachAdvancedModes({notify,onActive}){
@@ -22,9 +22,10 @@ export function attachAdvancedModes({notify,onActive}){
  return {disable(){desired=null;mode=null;},async ask(question,records){if(!mode)return null;const active=mode;try{
  let ranked=lexicalRanks(question),source='자연문장 키워드 후보';if(readyKorean){const {vector}=await request('korean','query',{question});ranked=denseRanks(vector,vectors);source='한국어 의미 후보';}
  const top=ranked[0];let candidates;
- if(isBuiltin(records)){candidates=candidatesFor(top.intent,records);if(!candidates.length)candidates=[chooseCompatible(top.intent,records)];}
+ const plan=isBuiltin(records)?planBuiltinAnswer(ranked,records):null;
+ if(plan){candidates=plan.candidates;if(!candidates.length)candidates=[plan.record];if(plan.abstained)source='경쟁 의도 안내 후보';}
  else{const rankedRecords=records.map(r=>({r,score:lexicalSearch(question,[r]).score})).sort((a,b)=>b.score-a.score);candidates=rankedRecords.slice(0,8).map(x=>x.r);source='내 선택지 키워드 후보';}
- if(active==='korean'){if(!isBuiltin(records))throw Error('한국어 의도 검색은 제공된 예시에 적용돼요. 내 파일은 E5 또는 Laya를 사용해 주세요.');return {record:chooseCompatible(top.intent,records),mode:'한국어 문장 검색 · 저장된 답'};}
+ if(active==='korean'){if(!isBuiltin(records))throw Error('한국어 의도 검색은 제공된 예시에 적용돼요. 내 파일은 E5 또는 Laya를 사용해 주세요.');return {record:plan.record,mode:plan.abstained?'한국어 문장 검색 · 판단 보류':'한국어 문장 검색 · 저장된 답'};}
  const decision=await request('laya','decide',{question,records:candidates});$('laya-status').textContent=`기기 내 결정 완료 · ${(decision.elapsedMs/1000).toFixed(2)}초 · ${decision.usage.input_tokens}토큰`;
  return {record:decision.record||{answer:'지금 질문에는 맞는 답을 찾지 못했어. 상황과 원하는 선택을 조금 더 알려 줘.',tag:'Laya · 해당 없음'},mode:`Laya 결정 · ${source} ${candidates.length}개 · ${(decision.elapsedMs/1000).toFixed(2)}초`};
  }catch(e){notify('이 모드 실행 실패: '+e.message+' 기본 검색으로 전환했어요.');setMode(null);return null;}}};

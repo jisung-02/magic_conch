@@ -1,0 +1,27 @@
+{
+  "model": "anpigon/ko-sroberta-multitask",
+  "revision": "ba6ffa9571bf149f8131138929500bff0b7e088d",
+  "verification": "2026-10-13 current local cache verified against public pinned tree; historical result timing does not prove identical cached files then",
+  "files": {
+    "config.json": {
+      "bytes": 726,
+      "digest": "3d3bc5b3bf076c21d3d3a60df2e4b2d5b249f56d",
+      "algorithm": "git-blob-sha1"
+    },
+    "tokenizer.json": {
+      "bytes": 752252,
+      "digest": "d5843bc5b1306b80af3f6799607cfae7720e37a2",
+      "algorithm": "git-blob-sha1"
+    },
+    "tokenizer_config.json": {
+      "bytes": 606,
+      "digest": "d8615388cdb14ca1ed84a3ec1865d67614e889ba",
+      "algorithm": "git-blob-sha1"
+    },
+    "onnx/model_quantized.onnx": {
+      "bytes": 111222129,
+      "digest": "561f801f51364d33e5e162948c147d4f091432fbec1d0e2e70ea493debede338",
+      "algorithm": "sha256"
+    }
+  }
+}

@@ -288,7 +288,7 @@
         "내일 휴무는 아니겠지?"
       ],
       "eligibleAnswerIds": [],
-      "routingResponseId": null
+      "routingResponseId": "external"
     },
     {
       "id": "medical_decision",

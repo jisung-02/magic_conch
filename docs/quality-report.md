@@ -84,3 +84,30 @@ python research/laya/reproduce-packed-parity.py --model-root . --output /tmp/lay
 공개 Release archive는 602,959,747bytes, SHA256 `cbba8cba793dc8e9901e3534007ade46ab5107bf16ba6994186502f5c4b8f014`이며 준비 스크립트가 다운로드·archive·각 파일 SHA/size를 검증합니다. CI 산출물 manifest totalBytes는 680,935,309이며 로컬 exporter의 680,984,617bytes와 작은 protobuf 차이가 있습니다. 약681MB 모델과 실행 파일을 Pages 같은 origin에서 제공하는 배포 브랜치를 올렸습니다. 앱/블로그 최종 빌드 통과 및 로컬 사이트 크기796,265,549bytes(별도 game build 제외) 확인; 완성 CI는 게임까지 포함한 dist 전체를1GB 아래인지 검사합니다. 현재 GitHub PR/배포가 완료되지 않았으므로 새 버전의 production URL·최종 브라우저 검증은 **미실행**입니다. 이전 로컬 Chrome의 명시적 모델 다운로드/한국어 질문/반복 Laya 추론1.39–2.00초 확인과 최종 max_length128 빌드 검증을 구분합니다.
 
 재현 감사 후 `research/embedding-specs.mjs`에 후보3개 revision을 명시했으며 이후 benchmark/dev pipeline에도 실제 `revision` 인자를 전달하고 결과 metadata에 저장합니다. frozen pipeline도 실제 인자를 추가했습니다. 이 수정 전에 저장된 역사 dev/holdout JSON은 pipeline revision 증빙이 없으므로 메타데이터의 revision만으로 실제 가중치 revision이 검증됐다고 주장하지 않습니다. 런타임 Ko/E5는 처음부터 revision pin을 사용했습니다. 집계 regression 테스트는 같은 예시 벡터에서 max=1, top2=0.5, centroid=1/√10, balanced=0.75+0.25/√10을 구분해 검증합니다. 품질 점수는 보관된 측정값 그대로이며, 새 pin으로 전체 재측정한 성적은 아닙니다.
+
+## 후속 앱 수정 및 새 평가 범위
+
+기존21개 frozen 결과를 보고 앱을 수정했으므로 그 세트는 이제 회귀/dev 근거입니다. 위16/21을 수정된 앱의 새 검증 성적이라고 재사용하지 않습니다. 기존21문항은7시나리오의3변형이며 독립21상황이 아닙니다. 문장 대비7/8과 주제 검색12/12도 해당 과거 설정의 별도 측정값입니다. 주제 평가의 out-of-domain4개는12/12 분모에서 제외됐으며 abstention 검증에 포함되지 않았습니다.
+
+최종 후속 규칙은 상위3의도 중 top1과 점수 차이가0.06 이하이고, high/urgent/boundary 의도와 서로 다른 응답 경로가 경쟁하면 한국어 답을 `route_unknown`으로 보류합니다. Laya에는 경쟁하는 보호 의도의 원래 안내 답들과 질문 확인 답만 전달하고, 일반 행동 권유 후보는 제외합니다.0.06은 회귀 오류를 바탕으로 정한 개발용 보수 규칙이며 보정된 margin이나 최적값이 아닙니다. score threshold는 여전히 없습니다. 이 정책은 독립적인 안전 분류기를 대체하지 않습니다.
+
+`factual_current`에 별도 `route_external` 안내를 추가해, 날씨·영업시간 등은 공식 예보/최신 안내 확인을 권합니다. 총 기본 데이터는 이제100일반답+9안내=109개(JSON/SQLite/앱 반영), 의도22개/질문예시88개입니다. 한국어 모드는 일반답100개 중 첫 compatible 답12개만 현재 도달하며, Laya 일반답 후보에는43개가 연결됩니다. 전체100개가 답 선택 경로에서 모두 사용된다고 주장하지 않습니다. 표현 일관성을 해치는 임의 무작위 확장도 하지 않았습니다. 기존 사용자 IndexedDB는 자동 교체하지 않으며 원하면 명시적으로 기본값 복원할 수 있습니다.
+
+후속 평가 입력은 `research/final-answer-validation.json`의 새16개 authored 질문으로 최초 실행 전 고정했습니다. 같은 작업자가 설계한 smoke validation이며 blinded human 평가가 아닙니다. 앞선 세트를 보고 만든 규칙의 일반 성능이나 '최고 품질'을 보증하지 않습니다. `research/evaluate-final-answer-flow.mjs`는 실제 앱의 `planBuiltinAnswer`를 사용해 DB 원래 답과 Laya에 전달하는 shipping answer 후보를 함께 기록합니다. `research/laya/evaluate-shipping-answer-flow.py`는 그 후보에서 학습된 encoder/head의 실제 답을 선택합니다. 예전4/20은 intent-label shortlist 실험이며 shipping answer-candidate 정확도가 아닙니다. strict 답 적합성과 추가 보류 횟수는 구분합니다. Node/Python CPU 평가이며 최종 브라우저 검증은 미실행입니다.
+
+기존 캐시4파일(config/tokenizer/tokenizer_config/q8 ONNX)을 고정 revision의 공개 Git-blob SHA1/LFS SHA256과 비교한 기록은 `research/results/ko-cache-verification.json`입니다. 이를 현재 확인한 사실과 과거 측정 당시 증빙 부족을 구분합니다. 후속 평가는 모델을 다시 받지 않고 검증한 캐시로 실행하며,88예시 벡터를 다시 계산해 과거 벡터와 차이를 기록합니다.
+
+```sh
+# 온라인 실행: pinned revision을 실제 pipeline 인자로 전달
+node research/evaluate-final-answer-flow.mjs ../../laya-onnx-packed
+# 기존 검증된 캐시 파일/verified-pin symlink 디렉터리가 준비된 이 Mac에서는
+CONCH_VERIFIED_CACHE=1 node research/evaluate-final-answer-flow.mjs ../../laya-onnx-packed
+# 상위 명령이 출력한 실제 DB-answer 후보를 학습된 Laya head로 평가
+python research/laya/evaluate-shipping-answer-flow.py --model-root ../..
+```
+
+Laya 모델 Release는 이제 기존 자산을 재사용하고 `--clobber`로 덮어쓰지 않습니다. 변경한 모델은 별도 버전 tag와 소비자 checksum을 갱신해야 합니다. npm build만으로 가중치가 포함되지 않으므로 deploy workflow의 `prepare:laya-assets`가 필수입니다. 같은 origin manifest/모델 HTTP 제공 확인은 실제 Pages 배포 후 해야 하며 현재 미실행입니다.
+
+새16개 authored 답-path 검증: 한국어 strict 답 범주12/16, 추가 질문 확인 보류3/16, 나머지1/16은 새 이어폰 질문을 missing_details/check_01로 분류했습니다. 보류는 정답으로 합산하지 않습니다. 같은 pinned 파일로88예시를 재계산한 과거 index 최대 차이는0이며 그 결과와 실제 답/후보/오류는 `research/results/final-answer-flow.json`에 있습니다. 이는 후속 코드의 첫 smoke 결과이며 blinded validation 성적이 아닙니다.
+
+최종 shipping Laya 후보의 실제 학습 head를 사용한16문항 CPU smoke 결과는 strict 답 범주2/16, 추가 NONE/질문확인 보류14/16입니다(`research/results/laya-final-answer-flow.json`). 보류를 적합한 정답으로 합산하지 않았습니다. 이는 예전 의도 라벨4/20과 구분되며 Laya의 우수성을 뒷받침하지 않습니다. 기존15개 packed parity를 다시 실행한 결과도 선택15/15·최대 분포 차이0이며 `/tmp/laya-packed-parity-recheck.json`에 보관했습니다.

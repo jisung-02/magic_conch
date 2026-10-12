@@ -647,6 +647,12 @@
       "text": "명제나 맥락이 불분명한 입력 그냥 그럴까?",
       "answer": "질문의 뜻을 조금만 더 알려 줘. 무엇을 할지 고민하는 거야?",
       "tag": "판단을 대신하지 않는 안내"
+    },
+    {
+      "id": "route_external",
+      "text": "현재 날씨·영업시간·운행 정보 확인",
+      "answer": "지금의 날씨나 영업시간은 소라가 확인할 수 없어. 공식 예보나 해당 장소의 최신 안내를 확인해 줘.",
+      "tag": "현재 정보 확인 안내"
     }
   ],
   "intents": [
@@ -912,7 +918,7 @@
         "내일 휴무는 아니겠지?"
       ],
       "eligibleAnswerIds": [],
-      "routingResponseId": null
+      "routingResponseId": "external"
     },
     {
       "id": "medical_decision",

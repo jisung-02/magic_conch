@@ -15,15 +15,31 @@ jobs:
       OMP_NUM_THREADS: '2'
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - run: pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
-      - run: pip install transformers==5.19.0 onnx==1.23.2 onnxruntime==1.31.0 onnxscript==0.7.2 safetensors==0.8.0 huggingface_hub==2.2.0 numpy==2.5.3 sentencepiece
-      - run: python scripts/export-laya-model.py
-      - name: Publish reusable licensed model asset
+      - name: Reuse immutable published model
+        id: published
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release view laya-model-packed-v1 >/dev/null 2>&1 || gh release create laya-model-packed-v1 --title "Laya multilingual lossless stored weights" --notes "Apache-2.0. Trained multilingual checkpoint e4e9ddf. Original FP32 ONNX export verified against PyTorch within 1e-4. Weights stored in FP16 with exact FP32 reconstruction asserted for every packed tensor; computations remain FP32. Derived format, not an official publisher ONNX release. Life advice quality and calibrated probabilities are not guaranteed." 
-          gh release upload laya-model-packed-v1 laya-multilingual-packed.zip --clobber
+          if gh release view laya-model-packed-v1 --json assets --jq '.assets[].name' | grep -Fxq laya-multilingual-packed.zip; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Reusing existing immutable asset; pinned consumer SHA-256 stays unchanged."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-python@v5
+        if: steps.published.outputs.exists != 'true'
+        with:
+          python-version: '3.12'
+      - if: steps.published.outputs.exists != 'true'
+        run: pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+      - if: steps.published.outputs.exists != 'true'
+        run: pip install transformers==5.19.0 onnx==1.23.2 onnxruntime==1.31.0 onnxscript==0.7.2 safetensors==0.8.0 huggingface_hub==2.2.0 numpy==2.5.3 sentencepiece
+      - if: steps.published.outputs.exists != 'true'
+        run: python scripts/export-laya-model.py
+      - name: Publish reusable licensed model asset
+        if: steps.published.outputs.exists != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view laya-model-packed-v1 >/dev/null 2>&1 || gh release create laya-model-packed-v1 --title "Laya multilingual lossless stored weights" --notes "Apache-2.0. Trained multilingual checkpoint e4e9ddf. Original FP32 ONNX export verified against PyTorch within 1e-4. Weights stored in FP16 with exact FP32 reconstruction asserted for every packed tensor; computations remain FP32. Derived format, not an official publisher ONNX release. Life advice quality and calibrated probabilities are not guaranteed."
+          gh release upload laya-model-packed-v1 laya-multilingual-packed.zip

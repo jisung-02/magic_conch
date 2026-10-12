@@ -11,3 +11,5 @@ dist/
 
 /laya-onnx-packed/
 /laya-multilingual-packed.zip
+
+__pycache__/
