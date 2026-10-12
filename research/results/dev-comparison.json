@@ -1,0 +1,38 @@
+[
+  {
+    "model": "Xenova/multilingual-e5-small",
+    "scores": {
+      "max": 16,
+      "top2": 16,
+      "centroid": 19,
+      "lexical": 11,
+      "rrf20": 15,
+      "rrf60": 15
+    },
+    "count": 20
+  },
+  {
+    "model": "anpigon/ko-sroberta-multitask",
+    "scores": {
+      "max": 19,
+      "top2": 18,
+      "centroid": 18,
+      "lexical": 11,
+      "rrf20": 17,
+      "rrf60": 17
+    },
+    "count": 20
+  },
+  {
+    "model": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+    "scores": {
+      "max": 12,
+      "top2": 11,
+      "centroid": 12,
+      "lexical": 11,
+      "rrf20": 12,
+      "rrf60": 12
+    },
+    "count": 20
+  }
+]

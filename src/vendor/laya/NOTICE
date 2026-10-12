@@ -1,0 +1,4 @@
+Laya by Convai Innovations / NandhaKishorM
+Apache-2.0; upstream commit 68804629e8ccd9d616d48a40e87de9fabbeae069
+TypeScript core transpiled with esbuild. Agent.load removed (custom browser provider); tokenizerFromHF exported. Decision/tokenization code otherwise unchanged.
+https://github.com/NandhaKishorM/laya

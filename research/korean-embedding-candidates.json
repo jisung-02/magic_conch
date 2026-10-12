@@ -1,0 +1,139 @@
+{
+  "status": "researched_not_executed",
+  "sizes": "Rounded decimal MB as displayed by repository, not peak memory or measured network transfer. Runtime files are additional.",
+  "candidates": [
+    {
+      "id": "Xenova/multilingual-e5-small",
+      "priority": "baseline",
+      "objective": "retrieval; symmetric similarity with query/query",
+      "file": "onnx/model_quantized.onnx",
+      "display_size_mb": 118,
+      "pooling": "mean",
+      "normalize": true,
+      "dimensions": 384,
+      "max_length": 512,
+      "similarity_prefixes": [
+        "query: ",
+        "query: "
+      ],
+      "retrieval_prefixes": [
+        "query: ",
+        "passage: "
+      ],
+      "browser_status": "Publisher supplies Transformers.js distribution; this research did not execute it",
+      "source": "https://huggingface.co/Xenova/multilingual-e5-small/tree/main/onnx"
+    },
+    {
+      "id": "anpigon/ko-sroberta-multitask",
+      "upstream": "jhgan/ko-sroberta-multitask",
+      "priority": "first Korean STS challenger",
+      "objective": "Korean KorSTS/KorNLI sentence similarity",
+      "file": "onnx/model_quantized.onnx",
+      "display_size_mb": 111,
+      "tokenizer_file": "tokenizer.json",
+      "tokenizer_display_size_mb": 0.752,
+      "pooling": "mean",
+      "normalize": true,
+      "dimensions": 768,
+      "max_length": 128,
+      "similarity_prefixes": [
+        "",
+        ""
+      ],
+      "retrieval_prefixes": [
+        "",
+        ""
+      ],
+      "browser_status": "Community ONNX exists in conventional layout; loading/operators/tokenizer parity/WASM/WebGPU not executed or certified",
+      "source": "https://huggingface.co/anpigon/ko-sroberta-multitask/tree/main/onnx"
+    },
+    {
+      "id": "Xenova/paraphrase-multilingual-MiniLM-L12-v2",
+      "priority": "symmetric similarity control",
+      "objective": "multilingual paraphrase sentence similarity",
+      "file": "onnx/model_quantized.onnx",
+      "display_size_mb": 118,
+      "pooling": "mean",
+      "normalize": true,
+      "dimensions": 384,
+      "max_length": 128,
+      "similarity_prefixes": [
+        "",
+        ""
+      ],
+      "retrieval_prefixes": [
+        "",
+        ""
+      ],
+      "browser_status": "Publisher supplies Transformers.js distribution; not executed here",
+      "source": "https://huggingface.co/Xenova/paraphrase-multilingual-MiniLM-L12-v2/tree/main/onnx"
+    },
+    {
+      "id": "exp-models/dragonkue-KoEn-E5-Tiny",
+      "priority": "experimental smaller download challenger",
+      "objective": "Korean/English retrieval",
+      "file": "onnx/model_qint8_arm64.onnx",
+      "display_size_mb": 38.3,
+      "tokenizer_file": "tokenizer.json",
+      "tokenizer_display_size_mb": 2.93,
+      "pooling": "mean",
+      "normalize": true,
+      "dimensions": 384,
+      "max_length": 512,
+      "similarity_prefixes": [
+        "query: ",
+        "query: "
+      ],
+      "retrieval_prefixes": [
+        "query: ",
+        "passage: "
+      ],
+      "browser_status": "ARM64 named export is NOT confirmed browser-ready. Must inspect graph/operators/output and configure filename or re-export portable q8; use fp32 150MB only as bounded compatibility reference. Never silently rename and claim compatible.",
+      "source": "https://huggingface.co/exp-models/dragonkue-KoEn-E5-Tiny/tree/main/onnx"
+    },
+    {
+      "id": "dragonkue/multilingual-e5-small-ko-v2",
+      "priority": "later if conversion allowed",
+      "objective": "Korean fine-tuned retrieval",
+      "file": "model.safetensors",
+      "display_size_mb": 471,
+      "tokenizer_file": "tokenizer.json",
+      "tokenizer_display_size_mb": 17.1,
+      "pooling": "mean",
+      "normalize": true,
+      "dimensions": 384,
+      "max_length": 512,
+      "similarity_prefixes": [
+        "query: ",
+        "query: "
+      ],
+      "retrieval_prefixes": [
+        "query: ",
+        "passage: "
+      ],
+      "browser_status": "No shipped ONNX verified in original repository; conversion needed; q8 size is not measured",
+      "source": "https://huggingface.co/dragonkue/multilingual-e5-small-ko-v2/tree/main"
+    },
+    {
+      "id": "Xenova/multilingual-e5-base",
+      "priority": "larger optional baseline",
+      "objective": "retrieval",
+      "file": "onnx/model_quantized.onnx",
+      "display_size_mb": 279,
+      "pooling": "mean",
+      "normalize": true,
+      "dimensions": 768,
+      "max_length": 512,
+      "similarity_prefixes": [
+        "query: ",
+        "query: "
+      ],
+      "retrieval_prefixes": [
+        "query: ",
+        "passage: "
+      ],
+      "browser_status": "Publisher supplies Transformers.js distribution; not executed here",
+      "source": "https://huggingface.co/Xenova/multilingual-e5-base/tree/main/onnx"
+    }
+  ]
+}

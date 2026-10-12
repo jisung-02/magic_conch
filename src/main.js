@@ -1,3 +1,4 @@
+import {attachAdvancedModes} from './advanced-modes.js';
 import './style.css';
 import {demo,CONFIG,validateRecords,lexicalSearch,cosine} from './data.js';
 import {readFile,exportSQLite,saveLocal,loadLocal} from './storage.js';
@@ -25,14 +26,15 @@ function setMode(){ $('mode-label').textContent=modelEnabled?'기기 내 의미 
 function download(blob,name){const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 $('open-db').onclick=()=>{refresh();$('db-dialog').showModal();};$('open-model').onclick=()=>$('model-dialog').showModal();document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>b.closest('dialog').close());document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d){const r=d.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)d.close();}}));
 $('question').oninput=()=>{$('char-count').textContent=`${$('question').value.length} / 300`;};document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>{$('question').value=b.dataset.q;$('question').oninput();$('question').focus();});
+const advancedModes=attachAdvancedModes({notify,onActive:active=>{if(active)modelEnabled=false;}});
 function embed(texts){return new Promise((resolve,reject)=>{const id=++requestID;pending.set(id,{resolve,reject});worker.postMessage({type:'embed',texts,id});});}
 $('load-model').onclick=()=>{
- if(modelReady){modelEnabled=true;setMode();$('model-status').textContent='의미 검색을 켰어요.';return;}
+ if(modelReady){advancedModes.disable();modelEnabled=true;setMode();$('model-status').textContent='의미 검색을 켰어요.';return;}
  $('load-model').disabled=true;$('model-status').textContent='모델을 준비하고 있어요. 다운로드 중에도 창을 닫고 키워드 모드를 쓸 수 있어요.';
  try{worker=new Worker(new URL('./model-worker.js',import.meta.url),{type:'module'});
  worker.onmessage=({data})=>{
   if(data.type==='progress')$('model-status').textContent=`내려받는 중 · ${data.file||'모델 준비'}${Number.isFinite(data.progress)?` · ${Math.round(data.progress)}%`:''}`;
-  if(data.type==='loaded'){modelReady=true;modelEnabled=true;setMode();$('load-model').textContent='의미 검색 켜기';$('load-model').disabled=false;$('disable-model').hidden=false;$('model-status').textContent='모델 준비 완료. 다음 질문부터 기기 내 의미 검색을 사용해요.';}
+  if(data.type==='loaded'){advancedModes.disable();modelReady=true;modelEnabled=true;setMode();$('load-model').textContent='의미 검색 켜기';$('load-model').disabled=false;$('disable-model').hidden=false;$('model-status').textContent='모델 준비 완료. 다음 질문부터 기기 내 의미 검색을 사용해요.';}
   if(data.type==='index-progress')$('model-status').textContent=`기기에서 임베딩 계산 중 · ${data.done} / ${data.total}`;
   if(data.type==='embedded'){pending.get(data.id)?.resolve(data.results);pending.delete(data.id);}
   if(data.type==='error'){if(data.id){pending.get(data.id)?.reject(new Error(data.message));pending.delete(data.id);}else failModel();}
@@ -42,7 +44,7 @@ $('load-model').onclick=()=>{
 function failModel(){modelReady=false;modelEnabled=false;worker?.terminate();worker=null;for(const p of pending.values())p.reject(new Error('모델 실행 오류'));pending.clear();setMode();$('load-model').disabled=false;$('load-model').textContent='모델 다운로드 다시 시도';$('model-status').textContent='모델을 불러오지 못했어요. 네트워크·저장 공간을 확인해 주세요. 키워드 모드는 계속 사용할 수 있어요.';}
 $('disable-model').onclick=()=>{modelEnabled=false;setMode();$('model-status').textContent='키워드 모드로 전환했어요.';};
 $('ask-form').onsubmit=async e=>{e.preventDefault();const q=$('question').value.trim();if(!q||busy)return;setBusy(true);notify('');let result,mode;
- try{if(modelEnabled&&modelReady){try{const missing=records.filter(r=>!r.embedding);if(missing.length){const embeddings=await embed(missing.map(r=>'passage: '+r.text));missing.forEach((r,i)=>r.embedding=embeddings[i]);await persist();}const [query]=await embed(['query: '+q]);let score=-Infinity;for(const r of records){const n=cosine(query,r.embedding);if(n>score){score=n;result=r;}}mode='의미 유사도 · 저장된 답';$('model-status').textContent='기기 내 검색 완료.';}catch{failModel();notify('의미 검색을 완료하지 못해 키워드 검색으로 찾았어요.');}}
+ try{const advanced=await advancedModes.ask(q,records);if(advanced){result=advanced.record;mode=advanced.mode;}if(!result&&modelEnabled&&modelReady){try{const missing=records.filter(r=>!r.embedding);if(missing.length){const embeddings=await embed(missing.map(r=>'passage: '+r.text));missing.forEach((r,i)=>r.embedding=embeddings[i]);await persist();}const [query]=await embed(['query: '+q]);let score=-Infinity;for(const r of records){const n=cosine(query,r.embedding);if(n>score){score=n;result=r;}}mode='의미 유사도 · 저장된 답';$('model-status').textContent='기기 내 검색 완료.';}catch{failModel();notify('의미 검색을 완료하지 못해 키워드 검색으로 찾았어요.');}}
  if(!result){const match=lexicalSearch(q,records);result=match.record;mode=match.matched?'키워드 일치 · 저장된 답':'일치하는 단어 없음 · 무작위 선택';}
  $('answer').textContent=result.answer;$('answer-tag').textContent=result.tag;$('answer-mode').textContent=mode;$('answer-card').hidden=false;$('answer-card').classList.remove('revealed');requestAnimationFrame(()=>$('answer-card').classList.add('revealed'));$('copy-answer').textContent='답변 복사 ↗';
  }finally{setBusy(false);}
@@ -50,5 +52,5 @@ $('ask-form').onsubmit=async e=>{e.preventDefault();const q=$('question').value.
 $('copy-answer').onclick=async()=>{try{await navigator.clipboard.writeText($('answer').textContent);$('copy-answer').textContent='복사했어요 ✓';}catch{notify('복사 권한이 없어요. 답변을 직접 선택해 복사해 주세요.');}};
 $('import-button').onclick=()=>$('import-file').click();$('import-file').onchange=async e=>{const file=e.target.files[0];if(!file||busy)return;setBusy(true);try{const data=await readFile(file);records=data.records;collectionName=data.name;generation++;$('answer-card').hidden=true;refresh();const saved=await persist();notify(saved?`${records.length}개의 선택지를 가져왔어요.`:`${records.length}개의 선택지를 가져왔지만 로컬 저장에 실패했어요. 이번 세션에서만 사용할 수 있으니 내보내기로 보관해 주세요.`);$('db-dialog').close();}catch(err){notify(`가져오기 실패: ${err.message}`);$('db-dialog').close();}finally{e.target.value='';setBusy(false);}};
 $('export-json').onclick=()=>download(new Blob([JSON.stringify({metadata:CONFIG,records},null,2)],{type:'application/json'}),'my-conch.json');$('export-db').onclick=async()=>{try{download(new Blob([await exportSQLite(records)],{type:'application/vnd.sqlite3'}),'my-conch.sqlite');}catch{notify('SQLite 파일을 만들지 못했어요. JSON으로 저장해 주세요.');}};
-$('reset').onclick=()=>{if(busy)return;if(!window.confirm('현재 선택지를 기본 선택지 12개로 바꿀까요? 필요한 자료는 먼저 내보내기로 보관하세요.'))return;records=structuredClone(demo);collectionName='기본 선택지';generation++;$('answer-card').hidden=true;refresh();persist();notify('기본 선택지로 돌아왔어요.');};
+$('reset').onclick=()=>{if(busy)return;if(!window.confirm('현재 선택지를 한국어 예시 108개로 바꿀까요? 필요한 자료는 먼저 내보내기로 보관하세요.'))return;records=structuredClone(demo);collectionName='기본 선택지';generation++;$('answer-card').hidden=true;refresh();persist();notify('기본 선택지로 돌아왔어요.');};
 refresh();setBusy(true);loadLocal().then(saved=>{if(saved&&!generation){records=validateRecords(saved.records,saved.metadata);collectionName=saved.name||'나의 선택지';refresh();}}).catch(()=>notify('저장된 선택지를 읽지 못했어요. 기본 선택지로 시작해요.')).finally(()=>setBusy(false));

@@ -1,0 +1,406 @@
+{
+  "schemaVersion": "1.0.0",
+  "locale": "ko-KR",
+  "purpose": "검색용 자연어 질문군. 의미/위험 intent를 검색한 후 답변을 별도로 고른다. 답변은 사실 정답 라벨이 아님.",
+  "evaluationSeparation": "question-cases.ko.json은 홀드아웃 검증 후보로 분리한다. 이 파일의 questionExamples를 평가 정답으로 재사용하지 않는다. 같은 말의 중복·유사 표현이 train/test에 누출되지 않았는지 실제 실험 전에 확인한다.",
+  "routingPrecedence": [
+    "self_harm_concern",
+    "physical_danger",
+    "consent_boundary",
+    "medical_decision",
+    "material_finance",
+    "legal_commitment",
+    "major_career",
+    "factual_current",
+    "another_person_feelings",
+    "unverifiable_future",
+    "low_risk",
+    "unclear_question"
+  ],
+  "selectionContract": [
+    "intent 검색 점수는 답변의 진실 확률이 아니다.",
+    "긍정/부정 질문을 동일 intent로 찾더라도 부정 범위는 별도로 해석해야 한다.",
+    "eligibleAnswerIds는 말투 후보이지 행동 정답이 아니다. 모순되는 후보 중 임의로 하나를 뽑아 사실 판단처럼 제시하지 않는다.",
+    "가벼운 오락용 선택만 한 세션에서 일관된 의미로 고른다. 문맥상 맞지 않는 후보는 제거한다.",
+    "애매하거나 위험 신호가 있으면 최고 유사도 하나를 강제로 채택하지 않는다. 위험 분류와 명확화를 우선한다.",
+    "external_information은 검증된 정보 조회를 별도로 수행하거나 현재 정보를 모른다고 알린다. 일반 오라클 답변으로 대체하지 않는다."
+  ],
+  "intents": [
+    {
+      "id": "start_hobby",
+      "label": "작고 되돌릴 수 있는 취미 시작",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "그림 배우기 시작해 볼까?",
+        "이번 주말에 뜨개질 한번 해 볼까?",
+        "새 취미에 도전해도 될까?",
+        "도예 체험은 안 하는 편이 나을까?"
+      ],
+      "eligibleAnswerIds": [
+        "go_03",
+        "go_05",
+        "small_01",
+        "small_04",
+        "small_06"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "casual_contact",
+      "label": "상대의 경계를 침해하지 않는 가벼운 연락",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "오랜만에 지인에게 잘 지내냐고 보내 볼까?",
+        "한동안 못 본 동창한테 안부 전할까?",
+        "별일 없이 먼저 문자해도 될까?",
+        "먼저 인사하지 않는 게 좋을까?"
+      ],
+      "eligibleAnswerIds": [
+        "ask_01",
+        "small_09",
+        "check_05"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "light_food_choice",
+      "label": "건강 조건 없는 가벼운 음식 선택",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "저녁은 국수로 먹어 볼까?",
+        "오늘 디저트를 하나 골라도 될까?",
+        "늘 먹던 메뉴 대신 다른 걸 시킬까?",
+        "이번에는 새 메뉴를 안 먹는 게 나을까?"
+      ],
+      "eligibleAnswerIds": [
+        "priority_01",
+        "priority_02",
+        "priority_05",
+        "small_06"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "small_purchase",
+      "label": "감당 가능한 소액 취향 구매",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "이 엽서 한 장 사 올까?",
+        "책갈피가 귀여운데 하나 살까?",
+        "작은 소품을 골라도 될까?",
+        "이 배지는 이번에 안 사는 편이 좋겠지?"
+      ],
+      "eligibleAnswerIds": [
+        "wait_05",
+        "priority_01",
+        "check_05",
+        "pass_01"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "reversible_outing",
+      "label": "안전 맥락의 가벼운 외출",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "근처 전시를 보러 갈까?",
+        "동네 서점에 잠깐 들러 볼까?",
+        "집 주변을 한 바퀴 돌아볼까?",
+        "카페 나들이는 오늘 안 갈까?"
+      ],
+      "eligibleAnswerIds": [
+        "priority_04",
+        "go_03",
+        "small_01",
+        "wait_01"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "task_start",
+      "label": "낮은 위험도의 과제 시작과 작은 단계",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "책상이 어질러져 있는데 어디부터 치우지?",
+        "미뤄 둔 독서 기록을 시작할까?",
+        "사진 정리는 조금만 해 볼까?",
+        "지금 정리 시작 안 해도 될까?"
+      ],
+      "eligibleAnswerIds": [
+        "small_01",
+        "small_09",
+        "small_10",
+        "go_03",
+        "rethink_10"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "preference_choice",
+      "label": "취향 선택 기준 정하기",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "두 색이 다 예쁜데 어느 기준으로 고르지?",
+        "익숙한 디자인과 새로운 디자인 중 고민돼.",
+        "취향에 맞는지 남의 반응이 좋은지 뭐가 중요할까?",
+        "남들이 좋다는 쪽을 안 골라도 괜찮을까?"
+      ],
+      "eligibleAnswerIds": [
+        "priority_01",
+        "priority_05",
+        "priority_09",
+        "priority_10",
+        "rethink_09"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "timing_nonurgent",
+      "label": "시급하지 않은 결정 시점",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "급한 일은 아닌데 오늘 정할까?",
+        "좀 더 생각하고 결정해도 될까?",
+        "이번 주 안에만 고르면 되는데 지금 정해야 하나?",
+        "오늘 안 정하면 아쉬울까?"
+      ],
+      "eligibleAnswerIds": [
+        "wait_01",
+        "wait_04",
+        "wait_05",
+        "wait_08"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "third_option",
+      "label": "선택지 재구성과 관점 전환",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "마음에 드는 선택지가 하나도 없어.",
+        "둘 중 하나만 골라야 해서 답답해.",
+        "이 방법 말고 다른 방법은 없을까?",
+        "지금 있는 후보를 안 골라도 될까?"
+      ],
+      "eligibleAnswerIds": [
+        "rethink_01",
+        "rethink_02",
+        "rethink_06",
+        "rethink_07"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "missing_details",
+      "label": "일상 선택의 정보 부족",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "괜찮아 보이는데 조건을 잘 모르겠어.",
+        "설명을 대충 봤는데 바로 골라도 될까?",
+        "후기 하나만 보고 결정해도 되나?",
+        "세부 내용은 안 확인해도 될까?"
+      ],
+      "eligibleAnswerIds": [
+        "check_01",
+        "check_02",
+        "check_03",
+        "check_07",
+        "check_08"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "shared_preference",
+      "label": "함께 하는 일의 선호 확인",
+      "risk": "low",
+      "route": "oracle",
+      "questionExamples": [
+        "친구들과 놀러 갈 장소를 혼자 정할까?",
+        "같이 볼 영화를 내 취향대로 골라도 될까?",
+        "일행은 아무 말 없는데 내가 정하면 되겠지?",
+        "같이 가는 사람들 의견은 안 물어봐도 될까?"
+      ],
+      "eligibleAnswerIds": [
+        "ask_04",
+        "ask_06",
+        "ask_10"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "another_person_feelings",
+      "label": "타인의 확인되지 않은 속마음",
+      "risk": "unknown_person_state",
+      "route": "uncertain",
+      "questionExamples": [
+        "새로 만난 사람이 나를 어떻게 생각할까?",
+        "그 사람이 기분 나빠했을까?",
+        "답장이 짧은데 날 싫어하나?",
+        "내가 귀찮은 건 아니겠지?"
+      ],
+      "eligibleAnswerIds": [
+        "uncertain_01",
+        "uncertain_06",
+        "uncertain_09",
+        "ask_03"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "unverifiable_future",
+      "label": "미래 결과 보장 요청",
+      "risk": "unknown_future",
+      "route": "uncertain",
+      "questionExamples": [
+        "내일 좋은 일이 생길까?",
+        "이번 시도가 꼭 잘될까?",
+        "오늘 운이 따라 줄까?",
+        "내 계획이 실패하진 않겠지?"
+      ],
+      "eligibleAnswerIds": [
+        "uncertain_02",
+        "uncertain_03",
+        "uncertain_04",
+        "uncertain_07",
+        "uncertain_08"
+      ],
+      "routingResponseId": null
+    },
+    {
+      "id": "factual_current",
+      "label": "현재 사실이나 실시간 정보 확인",
+      "risk": "factual",
+      "route": "external_information",
+      "questionExamples": [
+        "지금 그 가게 열었을까?",
+        "주말 행사에 아직 자리 남았을까?",
+        "오늘 막차를 탈 수 있을까?",
+        "내일 휴무는 아니겠지?"
+      ],
+      "eligibleAnswerIds": [],
+      "routingResponseId": null
+    },
+    {
+      "id": "medical_decision",
+      "label": "건강·투약 결정",
+      "risk": "high",
+      "route": "medical",
+      "questionExamples": [
+        "복용량을 두 배로 늘려도 될까?",
+        "아픈데 진료 안 받아도 될까?",
+        "이 증상을 그냥 무시할까?",
+        "다친 곳을 치료하지 않아도 괜찮겠지?"
+      ],
+      "eligibleAnswerIds": [],
+      "routingResponseId": "medical"
+    },
+    {
+      "id": "material_finance",
+      "label": "중요한 돈·투자·대출 결정",
+      "risk": "high",
+      "route": "financial",
+      "questionExamples": [
+        "빚을 내서 투자해도 될까?",
+        "보증금을 투자금으로 써 볼까?",
+        "대출을 받아도 감당할 수 있겠지?",
+        "전 재산을 걸지 않으면 기회를 놓칠까?"
+      ],
+      "eligibleAnswerIds": [],
+      "routingResponseId": "financial"
+    },
+    {
+      "id": "major_career",
+      "label": "중대한 진로·퇴사 결정",
+      "risk": "high",
+      "route": "career",
+      "questionExamples": [
+        "다음 직장 없이 회사를 그만둘까?",
+        "학교를 자퇴하고 바로 일할까?",
+        "합격한 곳을 포기하고 다른 길을 갈까?",
+        "이 직장은 계속 안 다녀도 되겠지?"
+      ],
+      "eligibleAnswerIds": [],
+      "routingResponseId": "career"
+    },
+    {
+      "id": "legal_commitment",
+      "label": "법적 책임과 계약 결정",
+      "risk": "high",
+      "route": "legal",
+      "questionExamples": [
+        "이 합의서에 동의해도 될까?",
+        "보증인 서명 좀 해 줘도 될까?",
+        "계약 내용을 모르지만 승인할까?",
+        "서류를 읽지 않아도 괜찮겠지?"
+      ],
+      "eligibleAnswerIds": [],
+      "routingResponseId": "legal"
+    },
+    {
+      "id": "physical_danger",
+      "label": "즉각적 물리적 위험",
+      "risk": "urgent",
+      "route": "safety",
+      "questionExamples": [
+        "술을 마셨는데 운전해도 될까?",
+        "안전장비 없이 높은 데 올라가도 돼?",
+        "위험 표시가 있는데 들어가 볼까?",
+        "졸린데 쉬지 말고 운전해도 괜찮겠지?"
+      ],
+      "eligibleAnswerIds": [],
+      "routingResponseId": "safety"
+    },
+    {
+      "id": "self_harm_concern",
+      "label": "자해·자살 위험 가능성",
+      "risk": "urgent",
+      "route": "self_harm",
+      "questionExamples": [
+        "나 자신을 다치게 하고 싶어.",
+        "살아갈 이유가 하나도 안 보여.",
+        "오늘 내 삶을 끝내도 될까?",
+        "이제 더 버티지 않아도 될까?"
+      ],
+      "eligibleAnswerIds": [],
+      "routingResponseId": "self_harm"
+    },
+    {
+      "id": "consent_boundary",
+      "label": "거절·동의·관계 경계",
+      "risk": "boundary",
+      "route": "consent",
+      "questionExamples": [
+        "차단당했는데 다른 번호로 연락할까?",
+        "상대가 거절해도 계속 찾아가면 될까?",
+        "싫다는 말을 무시하고 밀어붙일까?",
+        "상대의 허락을 안 받아도 괜찮겠지?"
+      ],
+      "eligibleAnswerIds": [],
+      "routingResponseId": "consent"
+    },
+    {
+      "id": "unclear_question",
+      "label": "명제나 맥락이 불분명한 입력",
+      "risk": "unclear",
+      "route": "unknown",
+      "questionExamples": [
+        "그냥 그럴까?",
+        "이건 어떻게 하지?",
+        "그러면 아닌 거지?",
+        "그거 안 해도 될까?"
+      ],
+      "eligibleAnswerIds": [],
+      "routingResponseId": "unknown"
+    }
+  ]
+}

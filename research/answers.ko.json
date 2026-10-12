@@ -1,0 +1,1234 @@
+{
+  "schemaVersion": "1.0.0",
+  "locale": "ko-KR",
+  "title": "마법의 소라: 오리지널 답변 예시",
+  "provenance": {
+    "createdAt": "2026-10-10",
+    "method": "공개 출판사/서점 소개로 질문-짧은 답 형식을 확인한 뒤 새로 작성. 책 본문을 추출·번역·의역한 데이터가 아님.",
+    "bookIdentityStatus": "사용자가 말한 특정 책은 미확정",
+    "sourceCorpusClaim": false,
+    "notes": "모든 답변은 이 앱을 위해 작성한 초안이며, 짧은 관용적 표현은 기존 표현과 우연히 겹칠 수 있음."
+  },
+  "sources": [
+    {
+      "id": "book_ko",
+      "url": "https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=11397333",
+      "supports": "캐롤 볼트 저, 천수현 역, 쇼비 2010-12-24, 내 인생의 해답, 원제 The Book of Answers, ISBN 9788996550105",
+      "sourceType": "bookstore_bibliography"
+    },
+    {
+      "id": "book_original",
+      "url": "https://www.penguin.co.uk/books/330036/the-book-of-answers-by-bolt-carol/9780553813548",
+      "supports": "Carol Bolt의 The Book Of Answers. 예/아니오 질문 후 책을 펼쳐 답을 찾는 형식.",
+      "sourceType": "publisher"
+    },
+    {
+      "id": "series_original",
+      "url": "https://www.hachettebookgroup.com/series/carol-bolt/book-of-answers/",
+      "supports": "원서 시리즈와 기본 질문/펼치기 구조.",
+      "sourceType": "publisher"
+    },
+    {
+      "id": "stationery_god",
+      "url": "https://www.yes24.com/product/goods/94869514",
+      "supports": "결정의신 - 마법의 고민 해결책은 문구/GIFT. 제조자/수입자 한달살이(먼스플라이), 판매 표기 갓샵. 저자/출판사 확인과 혼동하지 말 것.",
+      "sourceType": "bookstore_product"
+    }
+  ],
+  "categories": [
+    {
+      "id": "go",
+      "label": "작은 시도 권하기",
+      "semanticAction": "try_action"
+    },
+    {
+      "id": "pass",
+      "label": "이번에는 건너뛰기",
+      "semanticAction": "skip_action"
+    },
+    {
+      "id": "wait",
+      "label": "시점 미루기",
+      "semanticAction": "defer_action"
+    },
+    {
+      "id": "rethink",
+      "label": "관점 바꾸기",
+      "semanticAction": "reframe"
+    },
+    {
+      "id": "check",
+      "label": "확인 먼저",
+      "semanticAction": "gather_information"
+    },
+    {
+      "id": "ask",
+      "label": "직접 묻기",
+      "semanticAction": "ask_person"
+    },
+    {
+      "id": "small",
+      "label": "되돌릴 수 있게 시험하기",
+      "semanticAction": "reversible_trial"
+    },
+    {
+      "id": "priority",
+      "label": "자기 기준으로 고르기",
+      "semanticAction": "clarify_preference"
+    },
+    {
+      "id": "uncertain",
+      "label": "알 수 없는 것은 열어두기",
+      "semanticAction": "acknowledge_uncertainty"
+    },
+    {
+      "id": "play",
+      "label": "가벼운 장난과 환기",
+      "semanticAction": "playful_pause"
+    }
+  ],
+  "answers": [
+    {
+      "id": "go_01",
+      "category": "go",
+      "text": "해 봐. 생각보다 금방 끝날지도.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "go_02",
+      "category": "go",
+      "text": "이번엔 네가 먼저 움직여.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "go_03",
+      "category": "go",
+      "text": "작게 시작하면 된다.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "go_04",
+      "category": "go",
+      "text": "일단 첫 장부터 펼쳐.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "go_05",
+      "category": "go",
+      "text": "오늘의 한 표는 도전 쪽.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "go_06",
+      "category": "go",
+      "text": "망설임은 여기까지. 가볍게 해 봐.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "go_07",
+      "category": "go",
+      "text": "완벽한 준비보다 작은 시작.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "go_08",
+      "category": "go",
+      "text": "그 정도 모험은 오늘과 잘 어울려.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "go_09",
+      "category": "go",
+      "text": "한 번 해 보고 판단해.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "go_10",
+      "category": "go",
+      "text": "이번 선택은 네 손으로.",
+      "semanticAction": "try_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_01",
+      "category": "pass",
+      "text": "이번엔 건너뛰자.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_02",
+      "category": "pass",
+      "text": "오늘의 소라는 고개를 젓는다.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_03",
+      "category": "pass",
+      "text": "굳이 지금 할 필요는 없어.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_04",
+      "category": "pass",
+      "text": "안 해도 오늘은 잘 흘러간다.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_05",
+      "category": "pass",
+      "text": "그 선택은 잠깐 내려놔.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_06",
+      "category": "pass",
+      "text": "마음이 안 가면 억지로 고르지 마.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_07",
+      "category": "pass",
+      "text": "이번 차례는 보내 주자.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_08",
+      "category": "pass",
+      "text": "오늘은 다른 쪽에 한 표.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_09",
+      "category": "pass",
+      "text": "아쉬움보다 홀가분함이 클 수도.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "pass_10",
+      "category": "pass",
+      "text": "그건 다음 후보에게 양보해.",
+      "semanticAction": "skip_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_01",
+      "category": "wait",
+      "text": "한숨 돌리고 다시 골라.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_02",
+      "category": "wait",
+      "text": "오늘 밤의 너에게 한 번 더 물어봐.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_03",
+      "category": "wait",
+      "text": "서두를수록 놓치는 게 생겨.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_04",
+      "category": "wait",
+      "text": "지금은 결론보다 쉼표.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_05",
+      "category": "wait",
+      "text": "급한 일이 아니라면 내일 봐.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_06",
+      "category": "wait",
+      "text": "답이 안 보일 땐 잠깐 떨어져 봐.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_07",
+      "category": "wait",
+      "text": "마지막 한 조각이 올 때까지.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_08",
+      "category": "wait",
+      "text": "한 박자만 늦춰도 괜찮아.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_09",
+      "category": "wait",
+      "text": "조금 식힌 뒤에 결정해.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "wait_10",
+      "category": "wait",
+      "text": "모래가 가라앉으면 바닥이 보인다.",
+      "semanticAction": "defer_action",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_01",
+      "category": "rethink",
+      "text": "두 선택 말고 세 번째는 없어?",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_02",
+      "category": "rethink",
+      "text": "꼭 둘 중 하나여야 할까?",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_03",
+      "category": "rethink",
+      "text": "가장 귀찮은 부분부터 들여다봐.",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_04",
+      "category": "rethink",
+      "text": "원하는 것과 익숙한 것을 나눠 봐.",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_05",
+      "category": "rethink",
+      "text": "반대로 골랐을 때도 상상해 봐.",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_06",
+      "category": "rethink",
+      "text": "처음 세운 조건 하나를 바꿔 봐.",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_07",
+      "category": "rethink",
+      "text": "답보다 질문을 조금 고쳐 봐.",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_08",
+      "category": "rethink",
+      "text": "무엇을 얻는지보다 무엇을 놓는지 봐.",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_09",
+      "category": "rethink",
+      "text": "남의 기준을 잠깐 치워 봐.",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "rethink_10",
+      "category": "rethink",
+      "text": "한 번에 전부 정하려 하지 마.",
+      "semanticAction": "reframe",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_01",
+      "category": "check",
+      "text": "작은 글씨부터 읽어 봐.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_02",
+      "category": "check",
+      "text": "빠뜨린 조건이 하나 있을지 몰라.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_03",
+      "category": "check",
+      "text": "생각만 하지 말고 직접 확인해.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_04",
+      "category": "check",
+      "text": "사진 밖의 모습도 살펴봐.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_05",
+      "category": "check",
+      "text": "좋은 점 말고 번거로운 점도 세어 봐.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_06",
+      "category": "check",
+      "text": "기억 대신 기록을 확인해.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_07",
+      "category": "check",
+      "text": "추측 하나를 사실로 바꿔 와.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_08",
+      "category": "check",
+      "text": "처음 들은 말만으로 정하지 마.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_09",
+      "category": "check",
+      "text": "가능한지부터 알아보자.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "check_10",
+      "category": "check",
+      "text": "제일 찜찜한 부분부터 확인해.",
+      "semanticAction": "gather_information",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_01",
+      "category": "ask",
+      "text": "당사자에게 짧게 물어봐.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_02",
+      "category": "ask",
+      "text": "혼자 해석하기엔 빈칸이 많아.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_03",
+      "category": "ask",
+      "text": "그 사람의 대답을 먼저 들어 봐.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_04",
+      "category": "ask",
+      "text": "같이 하는 사람에게도 한 표를 줘.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_05",
+      "category": "ask",
+      "text": "질문을 돌려 말하지 않아도 돼.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_06",
+      "category": "ask",
+      "text": "말하지 않은 조건이 있을 수 있어.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_07",
+      "category": "ask",
+      "text": "답장을 상상하지 말고 질문을 써 봐.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_08",
+      "category": "ask",
+      "text": "한 사람의 의견을 더 들어 봐.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_09",
+      "category": "ask",
+      "text": "경험해 본 사람에게 물어봐.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "ask_10",
+      "category": "ask",
+      "text": "서로 같은 뜻인지부터 확인해.",
+      "semanticAction": "ask_person",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_01",
+      "category": "small",
+      "text": "전부 말고 조금만 해 봐.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_02",
+      "category": "small",
+      "text": "돌아올 길을 남겨 두고 시작해.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_03",
+      "category": "small",
+      "text": "딱 한 번 시험해 볼 방법을 찾아.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_04",
+      "category": "small",
+      "text": "큰 약속 전에 작은 연습.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_05",
+      "category": "small",
+      "text": "처음부터 오래 붙잡을 필요는 없어.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_06",
+      "category": "small",
+      "text": "맛보기만으로도 알게 되는 게 있어.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_07",
+      "category": "small",
+      "text": "첫 시도는 가볍게 잡아.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_08",
+      "category": "small",
+      "text": "해 보고 바꿀 수 있게 골라.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_09",
+      "category": "small",
+      "text": "일단 초안까지만 가 보자.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "small_10",
+      "category": "small",
+      "text": "끝까지 말고 첫 단계만.",
+      "semanticAction": "reversible_trial",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_01",
+      "category": "priority",
+      "text": "제일 중요한 한 가지부터 골라.",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_02",
+      "category": "priority",
+      "text": "편한 쪽도 훌륭한 선택이야.",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_03",
+      "category": "priority",
+      "text": "나중의 너에게 덜 번거로운 쪽.",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_04",
+      "category": "priority",
+      "text": "오늘 쓸 수 있는 힘만큼만.",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_05",
+      "category": "priority",
+      "text": "둘 다 괜찮다면 더 단순한 쪽.",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_06",
+      "category": "priority",
+      "text": "고른 뒤 덜 설명하고 싶은 쪽.",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_07",
+      "category": "priority",
+      "text": "계속 눈길이 가는 이유를 봐.",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_08",
+      "category": "priority",
+      "text": "오늘 필요한 것부터 챙겨.",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_09",
+      "category": "priority",
+      "text": "남에게 보여 줄 일이 없다면 뭘 고를래?",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "priority_10",
+      "category": "priority",
+      "text": "정답보다 네 취향이 필요한 질문이야.",
+      "semanticAction": "clarify_preference",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_01",
+      "category": "uncertain",
+      "text": "소라도 그 속마음까지는 몰라.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_02",
+      "category": "uncertain",
+      "text": "아직은 어느 쪽도 장담 못 해.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_03",
+      "category": "uncertain",
+      "text": "앞일은 조개껍데기 안에 안 들어 있어.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_04",
+      "category": "uncertain",
+      "text": "결과보다 네가 할 수 있는 일을 봐.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_05",
+      "category": "uncertain",
+      "text": "이번 답은 아직 물밑에 있어.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_06",
+      "category": "uncertain",
+      "text": "지금 들은 이야기만으론 부족해.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_07",
+      "category": "uncertain",
+      "text": "가능성은 있어. 보장은 없어.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_08",
+      "category": "uncertain",
+      "text": "좋은 예감과 확실한 사실은 따로 두자.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_09",
+      "category": "uncertain",
+      "text": "결론을 내릴 재료가 더 필요해.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "uncertain_10",
+      "category": "uncertain",
+      "text": "모른다고 남겨 둬도 괜찮아.",
+      "semanticAction": "acknowledge_uncertainty",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "plain",
+      "original": true
+    },
+    {
+      "id": "play_01",
+      "category": "play",
+      "text": "소라 회의 결과, 간식부터.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    },
+    {
+      "id": "play_02",
+      "category": "play",
+      "text": "파도 소리가 커서 잠깐 못 들었어.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    },
+    {
+      "id": "play_03",
+      "category": "play",
+      "text": "너무 오래 고민했어. 물 한 모금.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    },
+    {
+      "id": "play_04",
+      "category": "play",
+      "text": "소라를 흔들어도 답이 자라진 않아.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    },
+    {
+      "id": "play_05",
+      "category": "play",
+      "text": "오늘의 의장석은 네 차례야.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    },
+    {
+      "id": "play_06",
+      "category": "play",
+      "text": "그 질문, 소라보다 달력이 잘 알겠다.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    },
+    {
+      "id": "play_07",
+      "category": "play",
+      "text": "잠깐 창밖을 보고 돌아와.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    },
+    {
+      "id": "play_08",
+      "category": "play",
+      "text": "소라는 눈치 보는 기능이 없어.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    },
+    {
+      "id": "play_09",
+      "category": "play",
+      "text": "선택지는 둘인데 고민은 열 개네.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    },
+    {
+      "id": "play_10",
+      "category": "play",
+      "text": "지금 네 표정이 답보다 솔직할지도.",
+      "semanticAction": "playful_pause",
+      "allowedRisk": [
+        "low"
+      ],
+      "tone": "playful",
+      "original": true
+    }
+  ],
+  "routingResponses": [
+    {
+      "id": "medical",
+      "text": "몸과 약에 관한 결정은 소라에게 맡기지 말고, 의사나 약사에게 확인해 줘.",
+      "routing": "health_decision"
+    },
+    {
+      "id": "financial",
+      "text": "큰돈이 걸린 선택은 뽑기로 정하지 말자. 손실 가능성과 조건부터 확인해.",
+      "routing": "material_financial_decision"
+    },
+    {
+      "id": "legal",
+      "text": "서명이나 법적 책임이 걸린 일은 내용을 확인하고, 필요하면 전문가에게 물어봐.",
+      "routing": "legal_decision"
+    },
+    {
+      "id": "career",
+      "text": "퇴사나 진로처럼 큰 결정은 소라 한마디로 정하지 말자. 조건과 대안을 같이 놓고 봐.",
+      "routing": "major_career_decision"
+    },
+    {
+      "id": "safety",
+      "text": "위험할 수 있는 일은 지금 시도하지 말고, 안전한 곳에서 도움을 요청해.",
+      "routing": "immediate_physical_danger"
+    },
+    {
+      "id": "self_harm",
+      "text": "지금 많이 힘든 것 같아. 혼자 버티지 말고, 곁에 있는 믿을 만한 사람에게 바로 알려 줘. 당장 다칠 위험이 있다면 가까운 응급 도움을 받아 줘.",
+      "routing": "self_harm_concern"
+    },
+    {
+      "id": "consent",
+      "text": "상대가 원하지 않는다면 멈춰. 동의는 소라 대신 상대에게 확인해야 해.",
+      "routing": "consent_or_boundary"
+    },
+    {
+      "id": "unknown",
+      "text": "질문의 뜻을 조금만 더 알려 줘. 무엇을 할지 고민하는 거야?",
+      "routing": "unclear_question"
+    }
+  ]
+}

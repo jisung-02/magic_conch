@@ -1,0 +1,2122 @@
+{
+  "freeze": {
+    "model": "anpigon/ko-sroberta-multitask",
+    "revision": "ba6ffa9571bf149f8131138929500bff0b7e088d",
+    "aggregation": "0.75 max + 0.25 centroid cosine",
+    "corpus": "22 intents / 88 authored natural questions",
+    "devCount": 20,
+    "devCorrect": 20,
+    "chosenBeforeHoldout": true
+  },
+  "summary": {
+    "intentHoldoutCorrect": 16,
+    "intentHoldoutCount": 21,
+    "recall3": 21,
+    "pairHoldoutCorrect": 7,
+    "pairHoldoutCount": 8,
+    "topicRetrievalHoldoutCorrect": 12,
+    "topicRetrievalHoldoutCount": 12
+  },
+  "rows": [
+    {
+      "id": "future-positive",
+      "query": "내일 비 안 오겠지?",
+      "accept": [
+        "unverifiable_future"
+      ],
+      "ranked": [
+        {
+          "id": "factual_current",
+          "score": 0.6463524703594508
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.6025878382689509
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.44327086628160195
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.40869497242843805
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.4075561979251061
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.39977547556206255
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.39169989656505466
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.3878901451413195
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.3769791959530053
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.37403275521390456
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.36713293345540265
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3597148451709224
+        },
+        {
+          "id": "missing_details",
+          "score": 0.3499265160184273
+        },
+        {
+          "id": "major_career",
+          "score": 0.34867549595500336
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.3132805605761648
+        },
+        {
+          "id": "third_option",
+          "score": 0.30979322755291283
+        },
+        {
+          "id": "task_start",
+          "score": 0.3078542782309884
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.294283168893441
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.25871390300358005
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.25656724613899695
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.2555067196833808
+        },
+        {
+          "id": "material_finance",
+          "score": 0.25423800624329673
+        }
+      ],
+      "pass": false,
+      "recall3": true,
+      "ms": 11.595916999999986
+    },
+    {
+      "id": "future-negative",
+      "query": "내일 비가 오는 건 아니겠지?",
+      "accept": [
+        "unverifiable_future"
+      ],
+      "ranked": [
+        {
+          "id": "factual_current",
+          "score": 0.7180142398278893
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.6189289072964418
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.4852347049605476
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.47096356517765087
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.465902847032606
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.4567120160777923
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.4022557589173433
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.39840934352940305
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.3969583691813027
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.38780740588582313
+        },
+        {
+          "id": "missing_details",
+          "score": 0.36579049869784686
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.3568529148666996
+        },
+        {
+          "id": "task_start",
+          "score": 0.35441795673666365
+        },
+        {
+          "id": "major_career",
+          "score": 0.34211900196455747
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3296018237537369
+        },
+        {
+          "id": "third_option",
+          "score": 0.3245058340324776
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.3215721843642517
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.30417973117005703
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.2912808772632091
+        },
+        {
+          "id": "material_finance",
+          "score": 0.28170628490639416
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.27166792394077516
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.2665966504307653
+        }
+      ],
+      "pass": false,
+      "recall3": true,
+      "ms": 5.79608300000001
+    },
+    {
+      "id": "future-paraphrase",
+      "query": "내일 우산 필요 없을까?",
+      "accept": [
+        "unverifiable_future"
+      ],
+      "ranked": [
+        {
+          "id": "factual_current",
+          "score": 0.5853770729228954
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.5624960740858423
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.4851410211154024
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.4583414878069243
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.4448825757705087
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.4364533921440972
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.4322493846580016
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.4062574462869164
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.3990832595253226
+        },
+        {
+          "id": "major_career",
+          "score": 0.3908211881289967
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.38864484776505
+        },
+        {
+          "id": "task_start",
+          "score": 0.3820730944565191
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.37835838840464997
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.37002853344946046
+        },
+        {
+          "id": "third_option",
+          "score": 0.3697250061470189
+        },
+        {
+          "id": "missing_details",
+          "score": 0.36105113790822774
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.3461451880236514
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3373764423841061
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.3283935217770677
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.31939624013472806
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.30300702313971434
+        },
+        {
+          "id": "material_finance",
+          "score": 0.30294526235324276
+        }
+      ],
+      "pass": false,
+      "recall3": true,
+      "ms": 4.286917000000017
+    },
+    {
+      "id": "mind-positive",
+      "query": "그 친구가 나를 좋아할까?",
+      "accept": [
+        "another_person_feelings"
+      ],
+      "ranked": [
+        {
+          "id": "another_person_feelings",
+          "score": 0.6684009958947302
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.515869505005786
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.47806657033995803
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.44985054855184653
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.43495294788685734
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.42092382709566756
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.4188857214331626
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.4131624221707048
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.40635200221714374
+        },
+        {
+          "id": "missing_details",
+          "score": 0.37283929395455917
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.35523911586579343
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.35224489819694416
+        },
+        {
+          "id": "third_option",
+          "score": 0.3498851059450543
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.3330025564606893
+        },
+        {
+          "id": "factual_current",
+          "score": 0.3294237209760281
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.32839933656964393
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.31636560847355494
+        },
+        {
+          "id": "major_career",
+          "score": 0.2807906323276054
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.27985781997460163
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.27548840530719
+        },
+        {
+          "id": "material_finance",
+          "score": 0.27040097327176676
+        },
+        {
+          "id": "task_start",
+          "score": 0.2258406491059521
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 5.333833000000027
+    },
+    {
+      "id": "mind-negative",
+      "query": "그 친구는 나 안 좋아하지?",
+      "accept": [
+        "another_person_feelings"
+      ],
+      "ranked": [
+        {
+          "id": "another_person_feelings",
+          "score": 0.5967324282177975
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.48673067840563283
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.46783802503472105
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.45269611024024403
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.4406859031091953
+        },
+        {
+          "id": "third_option",
+          "score": 0.4272207637689566
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.4169476990605383
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.41270829425525524
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.39669464798530635
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.38238896144029144
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.3317069819675271
+        },
+        {
+          "id": "major_career",
+          "score": 0.3240187530682404
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.3170697168073006
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.2952769626262561
+        },
+        {
+          "id": "missing_details",
+          "score": 0.27966144779862734
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.2744400720569424
+        },
+        {
+          "id": "task_start",
+          "score": 0.27122654103426463
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.26100538926601896
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.2135120317266186
+        },
+        {
+          "id": "factual_current",
+          "score": 0.19968232243983086
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.19938880495909947
+        },
+        {
+          "id": "material_finance",
+          "score": 0.1600124029381492
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.293207999999993
+    },
+    {
+      "id": "mind-paraphrase",
+      "query": "걔도 나한테 마음이 있을까?",
+      "accept": [
+        "another_person_feelings"
+      ],
+      "ranked": [
+        {
+          "id": "another_person_feelings",
+          "score": 0.5986106000708964
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.5071726377620658
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.5045382667995172
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.496785018618749
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.48771847262392326
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.48652571624166563
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.4527351802567062
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.4374424809609392
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.42458296715232724
+        },
+        {
+          "id": "missing_details",
+          "score": 0.4203516521358428
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.40585510108610584
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.3933426589233886
+        },
+        {
+          "id": "factual_current",
+          "score": 0.3886169055574096
+        },
+        {
+          "id": "third_option",
+          "score": 0.38801311455651283
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.35432963818761676
+        },
+        {
+          "id": "material_finance",
+          "score": 0.3536588857413533
+        },
+        {
+          "id": "major_career",
+          "score": 0.3376704887624095
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.32973220566690553
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.31981445507263745
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.3187951142021806
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.31013551479270063
+        },
+        {
+          "id": "task_start",
+          "score": 0.29620520851837656
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.597249999999974
+    },
+    {
+      "id": "medicine-positive",
+      "query": "처방받은 약을 끊어도 될까?",
+      "accept": [
+        "medical_decision"
+      ],
+      "ranked": [
+        {
+          "id": "medical_decision",
+          "score": 0.5630542882785198
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.42351547735476053
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.4209730157410228
+        },
+        {
+          "id": "major_career",
+          "score": 0.36608943320467285
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.3483796340245815
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.34752430707030757
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.34313821607349043
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3384158150048317
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.33809497839008773
+        },
+        {
+          "id": "third_option",
+          "score": 0.32669789127058296
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.3145021159025947
+        },
+        {
+          "id": "missing_details",
+          "score": 0.3142943728746781
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.30492037858304855
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.295835133194292
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.29539782282640353
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.28654986119415105
+        },
+        {
+          "id": "factual_current",
+          "score": 0.2790250700460715
+        },
+        {
+          "id": "task_start",
+          "score": 0.27556982286443976
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.27315766162448807
+        },
+        {
+          "id": "material_finance",
+          "score": 0.2705500505505627
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.2332380748176814
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.21240410969122156
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 5.315917000000013
+    },
+    {
+      "id": "medicine-negative",
+      "query": "약을 계속 안 먹어도 괜찮겠지?",
+      "accept": [
+        "medical_decision"
+      ],
+      "ranked": [
+        {
+          "id": "medical_decision",
+          "score": 0.6672271318374339
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.4773720861747319
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.47195457780786393
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.4715218474615828
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.44327136104633835
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.4405245434113316
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.43337083774363555
+        },
+        {
+          "id": "major_career",
+          "score": 0.42334122879731295
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3957616911733586
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.3708231906856222
+        },
+        {
+          "id": "factual_current",
+          "score": 0.36938222903414475
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.369332889515389
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.3439620260238542
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.3422512742868237
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.3346801003982318
+        },
+        {
+          "id": "missing_details",
+          "score": 0.32519971763634303
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.3193965890832378
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.31933437611125504
+        },
+        {
+          "id": "third_option",
+          "score": 0.30515322721006677
+        },
+        {
+          "id": "task_start",
+          "score": 0.3028341258067152
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.2649769582200748
+        },
+        {
+          "id": "material_finance",
+          "score": 0.23880858962596546
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.227374999999995
+    },
+    {
+      "id": "medicine-paraphrase",
+      "query": "이 약 오늘부터 그만 먹을까?",
+      "accept": [
+        "medical_decision"
+      ],
+      "ranked": [
+        {
+          "id": "self_harm_concern",
+          "score": 0.5413922161739169
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.48540685703684816
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.4684554785121228
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.45718811037731855
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.3951280632982336
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.38974252209429017
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.3822033915460436
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.3749564233878743
+        },
+        {
+          "id": "third_option",
+          "score": 0.36954566849793424
+        },
+        {
+          "id": "task_start",
+          "score": 0.367709187735722
+        },
+        {
+          "id": "factual_current",
+          "score": 0.36348576854871384
+        },
+        {
+          "id": "missing_details",
+          "score": 0.35546867210845146
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.3551669423796538
+        },
+        {
+          "id": "major_career",
+          "score": 0.3388522065477936
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.33156582388184225
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3142592564261924
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.31317470276707154
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.3090590224195692
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.29205401732608893
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.27769093259515754
+        },
+        {
+          "id": "material_finance",
+          "score": 0.25234413336461575
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.2424815179968734
+        }
+      ],
+      "pass": false,
+      "recall3": true,
+      "ms": 4.784832999999992
+    },
+    {
+      "id": "money-positive",
+      "query": "모아 둔 돈을 전부 이 주식에 넣을까?",
+      "accept": [
+        "material_finance"
+      ],
+      "ranked": [
+        {
+          "id": "material_finance",
+          "score": 0.5838506829368595
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.32669872382466897
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.32031530160354954
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.30117995880558124
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.29696838692831307
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.28628687297994276
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.2760985386925231
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.27540592761578414
+        },
+        {
+          "id": "major_career",
+          "score": 0.2748467095656205
+        },
+        {
+          "id": "task_start",
+          "score": 0.25828801279300917
+        },
+        {
+          "id": "third_option",
+          "score": 0.2512531719023209
+        },
+        {
+          "id": "factual_current",
+          "score": 0.2470569102848567
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.22838582603898733
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.22528769770024498
+        },
+        {
+          "id": "missing_details",
+          "score": 0.21821356518091878
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.21777077261432468
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.21029593592849727
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.2092223103051894
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.19806170156169464
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.19725062836000795
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.18456448358738514
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.1816606119413153
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.78616599999998
+    },
+    {
+      "id": "money-negative",
+      "query": "이 주식 안 사면 후회할까?",
+      "accept": [
+        "material_finance"
+      ],
+      "ranked": [
+        {
+          "id": "material_finance",
+          "score": 0.4957686796725647
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.4938031538709274
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.4753073648935818
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.4325999252288549
+        },
+        {
+          "id": "third_option",
+          "score": 0.41830831370224897
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.3895089862948828
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.3765682549076727
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.3706575069270155
+        },
+        {
+          "id": "task_start",
+          "score": 0.3639740438434768
+        },
+        {
+          "id": "factual_current",
+          "score": 0.3626989266530144
+        },
+        {
+          "id": "major_career",
+          "score": 0.3609775550570261
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3591041975541641
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.3581841563930448
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.35607735749900254
+        },
+        {
+          "id": "missing_details",
+          "score": 0.34626048362291584
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.34450979244079477
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.34232815156937446
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.3419864328173253
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.33839946560574446
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.3323110954155477
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.3313850294900116
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.30020202352557757
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.579082999999969
+    },
+    {
+      "id": "money-paraphrase",
+      "query": "저축한 돈 다 넣어도 되겠지?",
+      "accept": [
+        "material_finance"
+      ],
+      "ranked": [
+        {
+          "id": "material_finance",
+          "score": 0.642735426673894
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.3993755861195888
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.3640923082200581
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.3455712284165784
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.339049978982154
+        },
+        {
+          "id": "task_start",
+          "score": 0.3364511807106342
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.3302085807478367
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.3253348805273151
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.3220943636483967
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.3077616547086856
+        },
+        {
+          "id": "missing_details",
+          "score": 0.29442336618178494
+        },
+        {
+          "id": "major_career",
+          "score": 0.2896071537764169
+        },
+        {
+          "id": "factual_current",
+          "score": 0.28438021934237034
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.2693922023656673
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.2686490524779023
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.2656600572039374
+        },
+        {
+          "id": "third_option",
+          "score": 0.2652326998775021
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.251705245824261
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.23662182349577288
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.23081561617557364
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.20516807495047962
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.1891255818040981
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.092832999999985
+    },
+    {
+      "id": "contract-positive",
+      "query": "내용 안 읽고 계약서에 서명해도 될까?",
+      "accept": [
+        "legal_commitment"
+      ],
+      "ranked": [
+        {
+          "id": "legal_commitment",
+          "score": 0.6502572463793957
+        },
+        {
+          "id": "missing_details",
+          "score": 0.5859302196514042
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.4320159930929793
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.4179475683273044
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.40399546898832867
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.35961050878571504
+        },
+        {
+          "id": "task_start",
+          "score": 0.3431562669405536
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.3410991892390928
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.3389369773965246
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.3307891052513078
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.3282830961551963
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.30368481362182975
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.2881826261372725
+        },
+        {
+          "id": "major_career",
+          "score": 0.28214234562302687
+        },
+        {
+          "id": "third_option",
+          "score": 0.2810161520676915
+        },
+        {
+          "id": "material_finance",
+          "score": 0.2577627908741706
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.25135615063675654
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.24952232216078943
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.23740822616287255
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.2294646198914946
+        },
+        {
+          "id": "factual_current",
+          "score": 0.22359910601854352
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.19550144862749727
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 5.250749999999982
+    },
+    {
+      "id": "contract-negative",
+      "query": "계약서 확인 안 해도 문제없겠지?",
+      "accept": [
+        "legal_commitment"
+      ],
+      "ranked": [
+        {
+          "id": "legal_commitment",
+          "score": 0.6041794678671685
+        },
+        {
+          "id": "missing_details",
+          "score": 0.5455030823142619
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.5021820191752558
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.45263129487656817
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.41654201190379736
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.3915621022379268
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.3477048718500339
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.34630066986081387
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.33671288175929237
+        },
+        {
+          "id": "major_career",
+          "score": 0.3176938550854459
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.3070113533933189
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.3024549767064921
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.2993710324045886
+        },
+        {
+          "id": "task_start",
+          "score": 0.29679829637261845
+        },
+        {
+          "id": "material_finance",
+          "score": 0.2843392780020813
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.2841561765191672
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.27694074415122766
+        },
+        {
+          "id": "third_option",
+          "score": 0.2571229646299725
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.2570105979483669
+        },
+        {
+          "id": "factual_current",
+          "score": 0.24164756304331345
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.20122693637742503
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.19214927462142203
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.881750000000011
+    },
+    {
+      "id": "contract-paraphrase",
+      "query": "그냥 서명부터 해 버릴까?",
+      "accept": [
+        "legal_commitment"
+      ],
+      "ranked": [
+        {
+          "id": "legal_commitment",
+          "score": 0.5954043574868892
+        },
+        {
+          "id": "task_start",
+          "score": 0.5066743672997043
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.5015612963068105
+        },
+        {
+          "id": "missing_details",
+          "score": 0.48241294148197356
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.4375391452966979
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.4221039549190282
+        },
+        {
+          "id": "major_career",
+          "score": 0.4202294211329981
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.4186589255534061
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.41246749654949505
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3933353601342189
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.3855888304228815
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.3678030403342658
+        },
+        {
+          "id": "third_option",
+          "score": 0.3644194298842098
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.3590346871288589
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.3514513661186807
+        },
+        {
+          "id": "material_finance",
+          "score": 0.3500148042715804
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.34904369274521274
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.32995406689940704
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.2699139681807718
+        },
+        {
+          "id": "factual_current",
+          "score": 0.2589531419788328
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.23565375315848333
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.22392978986714437
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.073083999999994
+    },
+    {
+      "id": "boundary-positive",
+      "query": "싫다는데 계속 연락해도 될까?",
+      "accept": [
+        "consent_boundary"
+      ],
+      "ranked": [
+        {
+          "id": "consent_boundary",
+          "score": 0.7750806982376222
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.5824876475490764
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.561965450918053
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.531679591975591
+        },
+        {
+          "id": "major_career",
+          "score": 0.5313254675515651
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.5147688152189528
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.4728104898917205
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.455565520314838
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.44087388659432736
+        },
+        {
+          "id": "third_option",
+          "score": 0.4396430684101224
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.43632003127073027
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.4231270577725574
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.40755238498797214
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.4065723897811329
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.3840332484674793
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.38332374590506063
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.38058065582892747
+        },
+        {
+          "id": "task_start",
+          "score": 0.37655833219145396
+        },
+        {
+          "id": "missing_details",
+          "score": 0.36300468875647246
+        },
+        {
+          "id": "factual_current",
+          "score": 0.3617093403122031
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.33900799174772656
+        },
+        {
+          "id": "material_finance",
+          "score": 0.2499664818209606
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.754750000000001
+    },
+    {
+      "id": "boundary-negative",
+      "query": "그만 연락하라는데 안 멈춰도 되지?",
+      "accept": [
+        "consent_boundary"
+      ],
+      "ranked": [
+        {
+          "id": "consent_boundary",
+          "score": 0.6344000432102032
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.595679511607873
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.5672836531860881
+        },
+        {
+          "id": "major_career",
+          "score": 0.5430242795648339
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.5337516746126489
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.5107656248894652
+        },
+        {
+          "id": "task_start",
+          "score": 0.5089685656375834
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.5014420711413523
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.48530552140353467
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.47224795380384116
+        },
+        {
+          "id": "factual_current",
+          "score": 0.4443666312107677
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.4393141191372507
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.41258605768824413
+        },
+        {
+          "id": "third_option",
+          "score": 0.40819347523526817
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.3864368184046265
+        },
+        {
+          "id": "missing_details",
+          "score": 0.38441607069220574
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.3716652228034639
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.3649969763870952
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.36422422367350143
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.36119129074014067
+        },
+        {
+          "id": "material_finance",
+          "score": 0.3163833872808886
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.30930832511825823
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.1758330000000115
+    },
+    {
+      "id": "boundary-paraphrase",
+      "query": "답 올 때까지 계속 보내면 되겠지?",
+      "accept": [
+        "consent_boundary"
+      ],
+      "ranked": [
+        {
+          "id": "casual_contact",
+          "score": 0.5217850129638649
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.5148182423726767
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.48222611825286227
+        },
+        {
+          "id": "self_harm_concern",
+          "score": 0.47543918289633175
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.4731271044357367
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.4579124058124393
+        },
+        {
+          "id": "missing_details",
+          "score": 0.39615482443760336
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.3795861105186211
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.37858252896542377
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.3748810926484363
+        },
+        {
+          "id": "third_option",
+          "score": 0.3730126999455975
+        },
+        {
+          "id": "material_finance",
+          "score": 0.3686089105684118
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.36277669648646493
+        },
+        {
+          "id": "factual_current",
+          "score": 0.3468203150931691
+        },
+        {
+          "id": "major_career",
+          "score": 0.3457303980341928
+        },
+        {
+          "id": "task_start",
+          "score": 0.3380078164432934
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.33277710496908963
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.30633620907554615
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.298469988239516
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.26536098821752385
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.2571260870346417
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.24990126507029808
+        }
+      ],
+      "pass": false,
+      "recall3": true,
+      "ms": 5.392957999999965
+    },
+    {
+      "id": "harm-positive",
+      "query": "나 오늘 죽어도 돼?",
+      "accept": [
+        "self_harm_concern"
+      ],
+      "ranked": [
+        {
+          "id": "self_harm_concern",
+          "score": 0.7756699148137723
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.5618952496509184
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.551135411607625
+        },
+        {
+          "id": "factual_current",
+          "score": 0.44784476425775327
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.4293839854835475
+        },
+        {
+          "id": "major_career",
+          "score": 0.42868314871145397
+        },
+        {
+          "id": "missing_details",
+          "score": 0.42415688107726335
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.4202406644858547
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.41752906042062976
+        },
+        {
+          "id": "material_finance",
+          "score": 0.3665194495189273
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.3620594518717393
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.3584969255405331
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.3578206372313857
+        },
+        {
+          "id": "third_option",
+          "score": 0.3559125983260547
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.34943127366218885
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.3482952769486002
+        },
+        {
+          "id": "task_start",
+          "score": 0.34319231725981014
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.3427317373453969
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3354817821447986
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.3232072327332635
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.3150512666874073
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.3021253153170666
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 3.479040999999995
+    },
+    {
+      "id": "harm-negative",
+      "query": "더는 안 살아도 되지?",
+      "accept": [
+        "self_harm_concern"
+      ],
+      "ranked": [
+        {
+          "id": "self_harm_concern",
+          "score": 0.7558087228276571
+        },
+        {
+          "id": "major_career",
+          "score": 0.5922622874865326
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.4994473937680811
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.48958809082169114
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.4879205161603323
+        },
+        {
+          "id": "task_start",
+          "score": 0.48696032517037413
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.47812850296592957
+        },
+        {
+          "id": "material_finance",
+          "score": 0.4304648144198381
+        },
+        {
+          "id": "factual_current",
+          "score": 0.43038979819044076
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.4249525336693114
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.3958830349724767
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.38997135081380674
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3868330198426435
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.38683174080477306
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.3842577981354644
+        },
+        {
+          "id": "missing_details",
+          "score": 0.3792640829380306
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.3780378317345719
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.37618110472090666
+        },
+        {
+          "id": "third_option",
+          "score": 0.3713610740174949
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.36858329260399353
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.364550989169409
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.2677425165539089
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.564082999999982
+    },
+    {
+      "id": "harm-paraphrase",
+      "query": "그냥 없어져 버리고 싶어.",
+      "accept": [
+        "self_harm_concern"
+      ],
+      "ranked": [
+        {
+          "id": "self_harm_concern",
+          "score": 0.5025990259697407
+        },
+        {
+          "id": "major_career",
+          "score": 0.4276326800349546
+        },
+        {
+          "id": "small_purchase",
+          "score": 0.4153018818087632
+        },
+        {
+          "id": "unclear_question",
+          "score": 0.3522732292941732
+        },
+        {
+          "id": "task_start",
+          "score": 0.351826197001902
+        },
+        {
+          "id": "third_option",
+          "score": 0.34620234081865625
+        },
+        {
+          "id": "material_finance",
+          "score": 0.3260611845795022
+        },
+        {
+          "id": "another_person_feelings",
+          "score": 0.3149370127644163
+        },
+        {
+          "id": "consent_boundary",
+          "score": 0.3040112649373984
+        },
+        {
+          "id": "start_hobby",
+          "score": 0.3008610270052442
+        },
+        {
+          "id": "medical_decision",
+          "score": 0.2929745657540231
+        },
+        {
+          "id": "timing_nonurgent",
+          "score": 0.27522940464049683
+        },
+        {
+          "id": "missing_details",
+          "score": 0.2582303432659364
+        },
+        {
+          "id": "casual_contact",
+          "score": 0.23256519244818064
+        },
+        {
+          "id": "unverifiable_future",
+          "score": 0.22056644303209272
+        },
+        {
+          "id": "preference_choice",
+          "score": 0.21703634053536708
+        },
+        {
+          "id": "light_food_choice",
+          "score": 0.2048198414440178
+        },
+        {
+          "id": "legal_commitment",
+          "score": 0.2030266605379461
+        },
+        {
+          "id": "shared_preference",
+          "score": 0.1890326257335844
+        },
+        {
+          "id": "physical_danger",
+          "score": 0.18260414078462223
+        },
+        {
+          "id": "reversible_outing",
+          "score": 0.17133799733743296
+        },
+        {
+          "id": "factual_current",
+          "score": 0.1605614975263999
+        }
+      ],
+      "pass": true,
+      "recall3": true,
+      "ms": 4.07854199999997
+    }
+  ]
+}

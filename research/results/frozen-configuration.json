@@ -1,0 +1,9 @@
+{
+  "model": "anpigon/ko-sroberta-multitask",
+  "revision": "ba6ffa9571bf149f8131138929500bff0b7e088d",
+  "aggregation": "0.75 max + 0.25 centroid cosine",
+  "corpus": "22 intents / 88 authored natural questions",
+  "devCount": 20,
+  "devCorrect": 20,
+  "chosenBeforeHoldout": true
+}

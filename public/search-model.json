@@ -1,0 +1,10 @@
+{
+  "model": "anpigon/ko-sroberta-multitask",
+  "revision": "ba6ffa9571bf149f8131138929500bff0b7e088d",
+  "label": "한국어 SRoBERTa q8",
+  "downloadLabel": "약112MB + 실행 파일",
+  "dimensions": 768,
+  "pooling": "mean",
+  "normalize": true,
+  "prefix": ""
+}
