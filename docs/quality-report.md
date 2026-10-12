@@ -45,7 +45,7 @@ Apache-2.0 모델과 upstream 라이선스/NOTICE를 함께 제공합니다. 임
 
 ## 최초 후보 8fc4f20의 재현 계약과 당시 배포 상태
 
-최초 후보 8fc4f20의 한국어 검색은 prefix 없음, q8, 768차원, attention-mask mean pooling과 L2 normalize, truncation/max_length=128, `0.75 × 최대 예시 cosine + 0.25 × centroid cosine`입니다. **별도의 score threshold나 top1–top2 margin gate는 구현하지 않았습니다.** 점수가 낮아도 top1 의도를 선택하므로 out-of-domain/명확화와 위험 질문 처리를 보장하지 않습니다. E5의 기존 threshold를 한국어 모델에 옮기지 않았고, 이 항목은 후속 독립 데이터로 calibration해야 합니다.
+최초 후보 8fc4f20의 한국어 검색은 prefix 없음, q8, 768차원, attention-mask mean pooling과 L2 normalize, truncation/max_length=128, `0.75 × 최대 예시 cosine + 0.25 × centroid cosine`입니다. **별도의 score threshold나 top1–top2 margin gate는 구현하지 않았습니다.** 점수가 낮아도 top1 의도를 선택하므로 out-of-domain/명확화와 위험 질문 처리를 보장하지 않습니다. 다른 모델의 threshold를 가져와 적용하지 않았고, 이 항목은 후속 독립 데이터로 calibration해야 합니다.
 
 최초 후보 8fc4f20의 기본 샘플은 독자적으로 작성한 답 100개 + 안내 8개이며 JSON/SQLite/앱 내 데이터에 반영했습니다. 22의도×4자연질문=88개가 검색 인덱스입니다. 기존 IndexedDB 파일은 자동 교체하지 않습니다. 한국어 모드는 제공된 108개 기본 데이터에 적용하며, 사용자 파일은 기존 E5 또는 Laya/키워드 경로를 사용합니다.
 
