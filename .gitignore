@@ -15,3 +15,5 @@ dist/
 __pycache__/
 
 /research/independent-final/blind-review-key.json
+
+/research/pipeline-v2/blind-review-key.json

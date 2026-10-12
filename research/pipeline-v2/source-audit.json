@@ -1,0 +1,12 @@
+{
+  "sourceHashes": {
+    "src/context-policy.js": "5cfb7b0edff0fdff97d35ee4a444932ba1976448ebad6b17ed623b0534648dd0",
+    "src/retrieval-examples-v2.json": "234db3ce77c79396c9f5b7fabdadc652418dbbe401f37b7e41baafe8db9731db",
+    "src/korean-retrieval.js": "87eb308a10f3887d7c34b3d102d4cfb551a5ffad31fb857f6f319f0823e6f263",
+    "src/korean-corpus.json": "0901aff0dfca5c9dca1d289fa71a047c012906147a5ae68f1e3b6d1ee778ea86",
+    "src/advanced-modes.js": "a995d929fd9b9f69fa11b2a7f181a347502f4c8d1ae9a68394a391ce8bef4877",
+    "src/main.js": "a2b67e81f4a9d03f2eb1ecb76904faa7217079c86404fb2a71d9ed0419661674"
+  },
+  "exactNormalizedIndexQueryMatches": [],
+  "limits": "Exact-match0 does not rule out semantic overlap or overfitting. All sets development/regression. No evaluation IDs/person names in runtime policy."
+}

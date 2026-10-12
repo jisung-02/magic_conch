@@ -1,0 +1,593 @@
+{
+  "scope": "Both partitions are authored development; not final validation. No posterior calibration or guarantees. Development66 favors the .85 dense/.15 lexical blend over dense-only by one case; calibration-dev22 ties. Moderate selective floors kept; not calibrated probabilities.",
+  "picked": {
+    "opts": {
+      "denseWeight": 0.85,
+      "ordinaryFloor": 0.38,
+      "protectedFloor": 0.58
+    },
+    "scores": {
+      "development": {
+        "count": 66,
+        "routeAccept": 66,
+        "intentAccept": 66,
+        "abstentions": 6
+      },
+      "calibration-dev": {
+        "count": 22,
+        "routeAccept": 22,
+        "intentAccept": 22,
+        "abstentions": 0
+      }
+    }
+  },
+  "rows": [
+    {
+      "opts": {
+        "denseWeight": 1,
+        "ordinaryFloor": 0.32,
+        "protectedFloor": 0.5
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 1,
+        "ordinaryFloor": 0.32,
+        "protectedFloor": 0.58
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 1,
+        "ordinaryFloor": 0.32,
+        "protectedFloor": 0.66
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 1,
+        "ordinaryFloor": 0.38,
+        "protectedFloor": 0.5
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 1,
+        "ordinaryFloor": 0.38,
+        "protectedFloor": 0.58
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 1,
+        "ordinaryFloor": 0.38,
+        "protectedFloor": 0.66
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 1,
+        "ordinaryFloor": 0.44,
+        "protectedFloor": 0.5
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 1,
+        "ordinaryFloor": 0.44,
+        "protectedFloor": 0.58
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 1,
+        "ordinaryFloor": 0.44,
+        "protectedFloor": 0.66
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.85,
+        "ordinaryFloor": 0.32,
+        "protectedFloor": 0.5
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 66,
+          "intentAccept": 66,
+          "abstentions": 6
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.85,
+        "ordinaryFloor": 0.32,
+        "protectedFloor": 0.58
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 66,
+          "intentAccept": 66,
+          "abstentions": 6
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.85,
+        "ordinaryFloor": 0.32,
+        "protectedFloor": 0.66
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 66,
+          "intentAccept": 66,
+          "abstentions": 6
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.85,
+        "ordinaryFloor": 0.38,
+        "protectedFloor": 0.5
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 66,
+          "intentAccept": 66,
+          "abstentions": 6
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.85,
+        "ordinaryFloor": 0.38,
+        "protectedFloor": 0.58
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 66,
+          "intentAccept": 66,
+          "abstentions": 6
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.85,
+        "ordinaryFloor": 0.38,
+        "protectedFloor": 0.66
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 66,
+          "intentAccept": 66,
+          "abstentions": 6
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.85,
+        "ordinaryFloor": 0.44,
+        "protectedFloor": 0.5
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.85,
+        "ordinaryFloor": 0.44,
+        "protectedFloor": 0.58
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.85,
+        "ordinaryFloor": 0.44,
+        "protectedFloor": 0.66
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.7,
+        "ordinaryFloor": 0.32,
+        "protectedFloor": 0.5
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 66,
+          "intentAccept": 66,
+          "abstentions": 6
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.7,
+        "ordinaryFloor": 0.32,
+        "protectedFloor": 0.58
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 66,
+          "intentAccept": 66,
+          "abstentions": 6
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.7,
+        "ordinaryFloor": 0.32,
+        "protectedFloor": 0.66
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 66,
+          "intentAccept": 66,
+          "abstentions": 6
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.7,
+        "ordinaryFloor": 0.38,
+        "protectedFloor": 0.5
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.7,
+        "ordinaryFloor": 0.38,
+        "protectedFloor": 0.58
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.7,
+        "ordinaryFloor": 0.38,
+        "protectedFloor": 0.66
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 65,
+          "intentAccept": 65,
+          "abstentions": 7
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 22,
+          "intentAccept": 22,
+          "abstentions": 0
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.7,
+        "ordinaryFloor": 0.44,
+        "protectedFloor": 0.5
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 63,
+          "intentAccept": 63,
+          "abstentions": 9
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 19,
+          "intentAccept": 19,
+          "abstentions": 3
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.7,
+        "ordinaryFloor": 0.44,
+        "protectedFloor": 0.58
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 63,
+          "intentAccept": 63,
+          "abstentions": 9
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 19,
+          "intentAccept": 19,
+          "abstentions": 3
+        }
+      }
+    },
+    {
+      "opts": {
+        "denseWeight": 0.7,
+        "ordinaryFloor": 0.44,
+        "protectedFloor": 0.66
+      },
+      "scores": {
+        "development": {
+          "count": 66,
+          "routeAccept": 63,
+          "intentAccept": 63,
+          "abstentions": 9
+        },
+        "calibration-dev": {
+          "count": 22,
+          "routeAccept": 19,
+          "intentAccept": 19,
+          "abstentions": 3
+        }
+      }
+    }
+  ]
+}
