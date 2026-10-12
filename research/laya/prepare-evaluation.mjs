@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import {Agent,tokenizerFromHF} from '../../src/vendor/laya/agent.js';
 import {buildLayaQuestion} from '../../src/laya-choice.js';
-import {demo} from '../../src/data.js';
+import {demo} from '../legacy-data.js';
 const root=process.argv[2]||'../../laya-onnx-int8';
 const tok=tokenizerFromHF(JSON.parse(fs.readFileSync(root+'/tokenizer.json'))),cfg=JSON.parse(fs.readFileSync(root+'/rl_agent_config.json'));
 const records=[...demo.filter(r=>['1','2','3','4','5','7','10','11'].includes(r.id))];
