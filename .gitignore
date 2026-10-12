@@ -13,3 +13,5 @@ dist/
 /laya-multilingual-packed.zip
 
 __pycache__/
+
+/research/independent-final/blind-review-key.json

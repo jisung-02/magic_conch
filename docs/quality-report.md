@@ -43,11 +43,11 @@ Apache-2.0 모델과 upstream 라이선스/NOTICE를 함께 제공합니다. 임
 
 실측 JSON과 스크립트는 `research/results/` 및 `research/laya/`에 있습니다. 원시 점수·오류·latency를 보존합니다. 아직 전체 배포 URL 검증 결과는 후속 배포 기록에 추가해야 합니다.
 
-## 재현 계약과 현재 배포 상태
+## 최초 후보 8fc4f20의 재현 계약과 당시 배포 상태
 
-최종 한국어 검색은 prefix 없음, q8, 768차원, attention-mask mean pooling과 L2 normalize, truncation/max_length=128, `0.75 × 최대 예시 cosine + 0.25 × centroid cosine`입니다. **별도의 score threshold나 top1–top2 margin gate는 구현하지 않았습니다.** 점수가 낮아도 top1 의도를 선택하므로 out-of-domain/명확화와 위험 질문 처리를 보장하지 않습니다. E5의 기존 threshold를 한국어 모델에 옮기지 않았고, 이 항목은 후속 독립 데이터로 calibration해야 합니다.
+최초 후보 8fc4f20의 한국어 검색은 prefix 없음, q8, 768차원, attention-mask mean pooling과 L2 normalize, truncation/max_length=128, `0.75 × 최대 예시 cosine + 0.25 × centroid cosine`입니다. **별도의 score threshold나 top1–top2 margin gate는 구현하지 않았습니다.** 점수가 낮아도 top1 의도를 선택하므로 out-of-domain/명확화와 위험 질문 처리를 보장하지 않습니다. E5의 기존 threshold를 한국어 모델에 옮기지 않았고, 이 항목은 후속 독립 데이터로 calibration해야 합니다.
 
-기본 샘플은 독자적으로 작성한 답 100개 + 안내 8개이며 JSON/SQLite/앱 내 데이터에 반영했습니다. 22의도×4자연질문=88개가 검색 인덱스입니다. 기존 IndexedDB 파일은 자동 교체하지 않습니다. 한국어 모드는 제공된 108개 기본 데이터에 적용하며, 사용자 파일은 기존 E5 또는 Laya/키워드 경로를 사용합니다.
+최초 후보 8fc4f20의 기본 샘플은 독자적으로 작성한 답 100개 + 안내 8개이며 JSON/SQLite/앱 내 데이터에 반영했습니다. 22의도×4자연질문=88개가 검색 인덱스입니다. 기존 IndexedDB 파일은 자동 교체하지 않습니다. 한국어 모드는 제공된 108개 기본 데이터에 적용하며, 사용자 파일은 기존 E5 또는 Laya/키워드 경로를 사용합니다.
 
 첫 후보 실패 5개(괄호는 기대→실제):
 - `내일 비 안 오겠지?` (unverifiable_future→factual_current)
@@ -85,7 +85,7 @@ python research/laya/reproduce-packed-parity.py --model-root . --output /tmp/lay
 
 재현 감사 후 `research/embedding-specs.mjs`에 후보3개 revision을 명시했으며 이후 benchmark/dev pipeline에도 실제 `revision` 인자를 전달하고 결과 metadata에 저장합니다. frozen pipeline도 실제 인자를 추가했습니다. 이 수정 전에 저장된 역사 dev/holdout JSON은 pipeline revision 증빙이 없으므로 메타데이터의 revision만으로 실제 가중치 revision이 검증됐다고 주장하지 않습니다. 런타임 Ko/E5는 처음부터 revision pin을 사용했습니다. 집계 regression 테스트는 같은 예시 벡터에서 max=1, top2=0.5, centroid=1/√10, balanced=0.75+0.25/√10을 구분해 검증합니다. 품질 점수는 보관된 측정값 그대로이며, 새 pin으로 전체 재측정한 성적은 아닙니다.
 
-## 후속 앱 수정 및 새 평가 범위
+## 동결 후보 b6224b70의 후속 수정 및 평가 범위
 
 기존21개 frozen 결과를 보고 앱을 수정했으므로 그 세트는 이제 회귀/dev 근거입니다. 위16/21을 수정된 앱의 새 검증 성적이라고 재사용하지 않습니다. 기존21문항은7시나리오의3변형이며 독립21상황이 아닙니다. 문장 대비7/8과 주제 검색12/12도 해당 과거 설정의 별도 측정값입니다. 주제 평가의 out-of-domain4개는12/12 분모에서 제외됐으며 abstention 검증에 포함되지 않았습니다.
 
@@ -111,3 +111,21 @@ Laya 모델 Release는 이제 기존 자산을 재사용하고 `--clobber`로 �
 새16개 authored 답-path 검증: 한국어 strict 답 범주12/16, 추가 질문 확인 보류3/16, 나머지1/16은 새 이어폰 질문을 missing_details/check_01로 분류했습니다. 보류는 정답으로 합산하지 않습니다. 같은 pinned 파일로88예시를 재계산한 과거 index 최대 차이는0이며 그 결과와 실제 답/후보/오류는 `research/results/final-answer-flow.json`에 있습니다. 이는 후속 코드의 첫 smoke 결과이며 blinded validation 성적이 아닙니다.
 
 최종 shipping Laya 후보의 실제 학습 head를 사용한16문항 CPU smoke 결과는 strict 답 범주2/16, 추가 NONE/질문확인 보류14/16입니다(`research/results/laya-final-answer-flow.json`). 보류를 적합한 정답으로 합산하지 않았습니다. 이는 예전 의도 라벨4/20과 구분되며 Laya의 우수성을 뒷받침하지 않습니다. 기존15개 packed parity를 다시 실행한 결과도 선택15/15·최대 분포 차이0이며 `/tmp/laya-packed-parity-recheck.json`에 보관했습니다.
+
+## 새 최종평가: 동결 b622 (수정 전 정상 경로)
+
+부모가 별도 작성한34가족×2변형=68문항을 b6224b70 후보 동결 뒤 전달했습니다. 작성자는 taxonomy만 읽고 후보 코드·이전 평가 질문/출력을 보지 않았으며, 색인88예시와 중복만 후속 제거했습니다. 단일 작성자 합성 자료이며 대표성 있는 외부 벤치마크가 아닙니다. 데이터 SHA256은0801097594a7d2a534c9b7854eae0ef37bcc1e64dbbc7d94cea649ea730ed49f입니다.
+
+Node CPU 검색/실제 Python ORT trained-head 실행의 raw 결과를 `research/independent-final/`에 보존했습니다. OOD4문항은 의도/paired accuracy에서만 제외하고 허용 경로/출력 조건에는 포함했습니다. 검색 raw top1은46/64(32가족 macro71.875%), top3는56/64(87.5%)입니다. 최종 응답의 paired intent/route는 한국어34/64(53.125%)·Laya12/64(18.75%), 허용 경로는44/68(34가족 macro64.706%)·19/68(27.941%)입니다. Laya raw intent 점수는 공유 검색의 점수이며 Laya head의 별도 분류 정확도가 아닙니다. 보류20/68·48/68을 정답으로 합산하지 않았습니다. OOD 허용 경로는 각각2/4이나 적절한 범위 안내인지 여부는 별도입니다.
+
+답변 조건/행동 적합성은 **눈가림 없는 assistant 예비 검토**만 완료했습니다. 한국어 조건29/68(가족macro42.647%)·행동35/68(51.471%), Laya 조건13/68(19.118%)·행동15/68(22.059%)이며 확인된 사람 평가 성적이 아닙니다.136개 익명 출력의 한국어 사용자 눈가림 검토는 미실행입니다. 라벨을 결과에 맞춰 바꾸지 않았고 애매한 경계는 REPORT와 예비 검토 JSON에 별도로 표시했습니다.
+
+사진 공개 거절 문맥에 한국어 FCV-054 '전부 말고 조금만 해 봐', Laya FCV-053 '일단 초안까지만 가 보자'/054 '끝까지 말고 첫 단계만'이 나왔습니다. 가스·침수 위험과 즉각적 자해에 필요한 안내를 빠뜨린 보류도 있습니다. 이 결과는 b622를 최고 품질/게시 최종본으로 승인하지 못하게 합니다. 생성한 현재 수치/운행 사실 조작은 관측하지 않았습니다. 질문별 실패를 사용해 검색 예시·가중치·margin·라벨을 튜닝하지 않았습니다.
+
+`raw-retrieval.json`은 top3/route/원래 DB 답/후보/토큰, `raw-laya.json`은 실제 head 선택/분포/답/보류 이유, `scored-classification.json`은 가족별·분모별 자동 평가, `provisional-response-review.json`은 예비 내용 검토, `blind-review.json`은 모델 이름을 가린 검토 입력입니다. REPORT.md에 방법·재현 명령·누락된 눈가림 검토를 명시했습니다. 모델 하네스의 오류 수정 재실행 없이 각 모델 경로를 한 번 실행했고, 점수/검토 하네스는 raw 실행 뒤 추가했습니다. Library 결과 파일ID는 libfile_21d9a128719c8191984fc78107b07f5b입니다.
+
+## 별도 모델 오류 복구 수정
+
+동결 평가 뒤 오류 복구 경로를 별도 수정했습니다. Laya 오류/90초 timeout이면 이미 계산한 보호 계획의 안내를 유지하고, 계획 전 임베딩/다운로드 실패는 명시적 모델 오류·확인 안내로 끝냅니다. 다음 질문에서도 자동 전체 DB 키워드/무작위 검색을 막으며 사용자가 명시적으로 재시도/다른 모드를 선택해야 해제됩니다. E5 로딩/추론 실패도 같은 원칙으로 처리합니다. 정상 검색 예시·후보 정책·임계값·모델 prompt/가중치는 b622 그대로입니다. 따라서 새68문항 정상 경로의 약점은 그대로 남아 있습니다.
+
+26개 테스트 통과: Laya 오류/timeout, 계획 전 한국어 임베딩/다운로드 실패, E5 load/inference 실패를 주입해 보류와 재시도를 검증했습니다. 모델 실패시 임의 DB record가 안전 답으로 위장하지 못하는 것도 검증했습니다.68문항의 저장된 query ranking/실제 head 결과를 정상 인터페이스에 다시 공급하는 **회귀 replay**에서 한국어 답·Laya 후보/답이 모두 동일했습니다. 실제 모델을 다시 측정한 새 성적 또는 새 독립 검증이라고 부르지 않습니다. 최종 Pages/브라우저 검증은 아직 미실행이며 PR 생성 도구 시간 초과가 배포를 막고 있습니다.

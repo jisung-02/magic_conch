@@ -18,6 +18,12 @@ for mode in ['korean','laya']:
   for r in eligible:groups[r['family_id']].append(int(r[metric]))
   part[metric]={'numerator':sum(r[metric] for r in eligible),'denominator':len(eligible),'familyCount':len(groups),'familyMacro':sum(sum(v)/len(v) for v in groups.values())/len(groups)}
  part['families']={f:{'count':len(rs),'routeAccept':sum(r['finalRouteAccept'] for r in rs)/len(rs),'pairedAccept':None if all(r['ood'] for r in rs) else sum(bool(r['finalPairedAccept']) for r in rs)/len(rs),'abstentions':sum(r['abstained'] for r in rs)} for f,rs in ((f,[r for r in selected if r['family_id']==f]) for f in sorted({r['family_id'] for r in selected}))}
+ part['classificationSlices']={}
+ for label,multi in [('singleAcceptable',False),('multiAcceptable',True)]:
+  subset=[r for r in selected if not r['ood'] and (len(r['acceptable_classifications'])>1)==multi]
+  part['classificationSlices'][label]={'count':len(subset),'rawPairedAccept':sum(r['rawPairedAccept'] for r in subset),'finalPairedAccept':sum(r['finalPairedAccept'] for r in subset)}
+ part['phenomena']={name:{'count':len(rs),'finalRouteAccept':sum(r['finalRouteAccept'] for r in rs),'abstentions':sum(r['abstained'] for r in rs)} for name,rs in ((name,[r for r in selected if name in r['phenomena']]) for name in sorted({p for r in selected for p in r['phenomena']}))}
+ part['primaryExpectedIntent']={name:{'count':len(rs),'rawIntentAccept':sum(bool(r['rawIntentAccept']) for r in rs),'finalRouteAccept':sum(r['finalRouteAccept'] for r in rs)} for name,rs in ((name,[r for r in selected if not r['ood'] and r['acceptable_classifications'][0]['intent_id']==name]) for name in sorted({r['acceptable_classifications'][0]['intent_id'] for r in selected if not r['ood']}))}
  part['ambiguousLabelRows']=sum(len(r['acceptable_classifications'])>1 and not r['ood'] for r in selected);part['OOD']={'count':4,'routeAccept':sum(r['finalRouteAccept'] for r in selected if r['ood']),'intentAccuracyExcluded':True};summary[mode]=part
 random.Random(20261013).shuffle(blind);key=[]
 for i,b in enumerate(blind,1):key.append({'reviewId':f'R{i:03}','id':b['id'],'mode':b.pop('_mode')});b['reviewId']=f'R{i:03}'

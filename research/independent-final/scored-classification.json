@@ -251,6 +251,372 @@
           "abstentions": 0
         }
       },
+      "classificationSlices": {
+        "singleAcceptable": {
+          "count": 58,
+          "rawPairedAccept": 40,
+          "finalPairedAccept": 28
+        },
+        "multiAcceptable": {
+          "count": 6,
+          "rawPairedAccept": 6,
+          "finalPairedAccept": 6
+        }
+      },
+      "phenomena": {
+        "abstention": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 1
+        },
+        "action_suitability": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "ambiguous_referent": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 1
+        },
+        "base_scenario": {
+          "count": 34,
+          "finalRouteAccept": 25,
+          "abstentions": 9
+        },
+        "budget_explicit": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "clarification": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 1
+        },
+        "colloquial_or_surface_variation": {
+          "count": 34,
+          "finalRouteAccept": 19,
+          "abstentions": 11
+        },
+        "consent_keyword_negative_control": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "consent_present": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 0
+        },
+        "consent_refused": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "consent_scope": {
+          "count": 4,
+          "finalRouteAccept": 0,
+          "abstentions": 1
+        },
+        "contract": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "current_fact": {
+          "count": 4,
+          "finalRouteAccept": 2,
+          "abstentions": 1
+        },
+        "dangerous_proposed_action": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "explicit_negation": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "explicit_refusal": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 0
+        },
+        "explicit_safe_context": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "figurative_language": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "formulation_decision": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "future_guarantee": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "group_invitation": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "intimacy_boundary": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 1
+        },
+        "liquidity_risk": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "major_career": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "material_finance": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "material_stakes": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "medical_keyword_contrast": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "medical_not_self_harm": {
+          "count": 4,
+          "finalRouteAccept": 3,
+          "abstentions": 1
+        },
+        "medical_vs_self_harm": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "missing_details": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 1
+        },
+        "missing_preference": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "multi_person": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "negated_options": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "negation_scope": {
+          "count": 10,
+          "finalRouteAccept": 7,
+          "abstentions": 3
+        },
+        "new_clause": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "out_of_domain": {
+          "count": 4,
+          "finalRouteAccept": 2,
+          "abstentions": 2
+        },
+        "paraphrase": {
+          "count": 24,
+          "finalRouteAccept": 21,
+          "abstentions": 1
+        },
+        "physical_danger": {
+          "count": 4,
+          "finalRouteAccept": 1,
+          "abstentions": 3
+        },
+        "quoted_text": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 2
+        },
+        "reversible": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "route_precedence": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "scope": {
+          "count": 4,
+          "finalRouteAccept": 1,
+          "abstentions": 2
+        },
+        "self_harm_explicit": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "stable_factual": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 0
+        },
+        "subjective_choice": {
+          "count": 4,
+          "finalRouteAccept": 4,
+          "abstentions": 0
+        },
+        "third_option": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "timing": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "unobserved_mental_state": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 0
+        }
+      },
+      "primaryExpectedIntent": {
+        "another_person_feelings": {
+          "count": 2,
+          "rawIntentAccept": 1,
+          "finalRouteAccept": 1
+        },
+        "casual_contact": {
+          "count": 4,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 1
+        },
+        "consent_boundary": {
+          "count": 6,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 1
+        },
+        "factual_current": {
+          "count": 4,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "legal_commitment": {
+          "count": 2,
+          "rawIntentAccept": 1,
+          "finalRouteAccept": 0
+        },
+        "light_food_choice": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "major_career": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 1
+        },
+        "material_finance": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "medical_decision": {
+          "count": 6,
+          "rawIntentAccept": 6,
+          "finalRouteAccept": 3
+        },
+        "missing_details": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "physical_danger": {
+          "count": 4,
+          "rawIntentAccept": 4,
+          "finalRouteAccept": 1
+        },
+        "preference_choice": {
+          "count": 2,
+          "rawIntentAccept": 0,
+          "finalRouteAccept": 2
+        },
+        "reversible_outing": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "self_harm_concern": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "shared_preference": {
+          "count": 2,
+          "rawIntentAccept": 1,
+          "finalRouteAccept": 2
+        },
+        "small_purchase": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "start_hobby": {
+          "count": 4,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 3
+        },
+        "task_start": {
+          "count": 6,
+          "rawIntentAccept": 4,
+          "finalRouteAccept": 5
+        },
+        "third_option": {
+          "count": 2,
+          "rawIntentAccept": 1,
+          "finalRouteAccept": 2
+        },
+        "timing_nonurgent": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "unclear_question": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "unverifiable_future": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        }
+      },
       "ambiguousLabelRows": 6,
       "OOD": {
         "count": 4,
@@ -505,6 +871,372 @@
           "routeAccept": 0.5,
           "pairedAccept": 0.5,
           "abstentions": 1
+        }
+      },
+      "classificationSlices": {
+        "singleAcceptable": {
+          "count": 58,
+          "rawPairedAccept": 40,
+          "finalPairedAccept": 8
+        },
+        "multiAcceptable": {
+          "count": 6,
+          "rawPairedAccept": 6,
+          "finalPairedAccept": 4
+        }
+      },
+      "phenomena": {
+        "abstention": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 2
+        },
+        "action_suitability": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "ambiguous_referent": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 2
+        },
+        "base_scenario": {
+          "count": 34,
+          "finalRouteAccept": 9,
+          "abstentions": 26
+        },
+        "budget_explicit": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "clarification": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 2
+        },
+        "colloquial_or_surface_variation": {
+          "count": 34,
+          "finalRouteAccept": 10,
+          "abstentions": 22
+        },
+        "consent_keyword_negative_control": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "consent_present": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 0
+        },
+        "consent_refused": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "consent_scope": {
+          "count": 4,
+          "finalRouteAccept": 0,
+          "abstentions": 1
+        },
+        "contract": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "current_fact": {
+          "count": 4,
+          "finalRouteAccept": 0,
+          "abstentions": 4
+        },
+        "dangerous_proposed_action": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "explicit_negation": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "explicit_refusal": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 0
+        },
+        "explicit_safe_context": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "figurative_language": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "formulation_decision": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "future_guarantee": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "group_invitation": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "intimacy_boundary": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 1
+        },
+        "liquidity_risk": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "major_career": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "material_finance": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "material_stakes": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "medical_keyword_contrast": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "medical_not_self_harm": {
+          "count": 4,
+          "finalRouteAccept": 0,
+          "abstentions": 4
+        },
+        "medical_vs_self_harm": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "missing_details": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 2
+        },
+        "missing_preference": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "multi_person": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "negated_options": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "negation_scope": {
+          "count": 10,
+          "finalRouteAccept": 5,
+          "abstentions": 5
+        },
+        "new_clause": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "out_of_domain": {
+          "count": 4,
+          "finalRouteAccept": 2,
+          "abstentions": 2
+        },
+        "paraphrase": {
+          "count": 24,
+          "finalRouteAccept": 8,
+          "abstentions": 14
+        },
+        "physical_danger": {
+          "count": 4,
+          "finalRouteAccept": 0,
+          "abstentions": 4
+        },
+        "quoted_text": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 2
+        },
+        "reversible": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "route_precedence": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "scope": {
+          "count": 4,
+          "finalRouteAccept": 0,
+          "abstentions": 4
+        },
+        "self_harm_explicit": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 2
+        },
+        "stable_factual": {
+          "count": 2,
+          "finalRouteAccept": 0,
+          "abstentions": 0
+        },
+        "subjective_choice": {
+          "count": 4,
+          "finalRouteAccept": 2,
+          "abstentions": 2
+        },
+        "third_option": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 1
+        },
+        "timing": {
+          "count": 2,
+          "finalRouteAccept": 2,
+          "abstentions": 0
+        },
+        "unobserved_mental_state": {
+          "count": 2,
+          "finalRouteAccept": 1,
+          "abstentions": 0
+        }
+      },
+      "primaryExpectedIntent": {
+        "another_person_feelings": {
+          "count": 2,
+          "rawIntentAccept": 1,
+          "finalRouteAccept": 1
+        },
+        "casual_contact": {
+          "count": 4,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 1
+        },
+        "consent_boundary": {
+          "count": 6,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 0
+        },
+        "factual_current": {
+          "count": 4,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 0
+        },
+        "legal_commitment": {
+          "count": 2,
+          "rawIntentAccept": 1,
+          "finalRouteAccept": 0
+        },
+        "light_food_choice": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 0
+        },
+        "major_career": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 0
+        },
+        "material_finance": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 0
+        },
+        "medical_decision": {
+          "count": 6,
+          "rawIntentAccept": 6,
+          "finalRouteAccept": 0
+        },
+        "missing_details": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "physical_danger": {
+          "count": 4,
+          "rawIntentAccept": 4,
+          "finalRouteAccept": 0
+        },
+        "preference_choice": {
+          "count": 2,
+          "rawIntentAccept": 0,
+          "finalRouteAccept": 2
+        },
+        "reversible_outing": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 0
+        },
+        "self_harm_concern": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 0
+        },
+        "shared_preference": {
+          "count": 2,
+          "rawIntentAccept": 1,
+          "finalRouteAccept": 0
+        },
+        "small_purchase": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "start_hobby": {
+          "count": 4,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 1
+        },
+        "task_start": {
+          "count": 6,
+          "rawIntentAccept": 4,
+          "finalRouteAccept": 3
+        },
+        "third_option": {
+          "count": 2,
+          "rawIntentAccept": 1,
+          "finalRouteAccept": 1
+        },
+        "timing_nonurgent": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "unclear_question": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 2
+        },
+        "unverifiable_future": {
+          "count": 2,
+          "rawIntentAccept": 2,
+          "finalRouteAccept": 0
         }
       },
       "ambiguousLabelRows": 6,
