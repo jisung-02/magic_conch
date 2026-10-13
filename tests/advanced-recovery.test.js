@@ -37,3 +37,10 @@ test('explicit protected routing cannot be released by Laya NONE, worker failure
  w.onmessage({data:{type:'decided',id:999,record:null,elapsedMs:1,usage:{input_tokens:1}}});w.onerror();
  assert.equal((await s.api.ask('약 복용량을 바꿀까?',demo)).record.id,'route_medical');
 });
+test('unconfirmed publication stays locked before a failed/expired model for imported data too',async()=>{
+ const s=setup();const w=await s.load('laya');
+ for(const records of [demo,[{id:'route_consent_confirm',text:'허락',answer:'그냥 공개해'}]]){
+  const result=await s.api.ask('공개 동의를 받지 않았어. 영상을 게시할까?',records);assert.equal(result.record.id,'route_consent_confirm');assert.match(result.record.answer,/명시적인 동의/);assert.equal(w.last.type,'load');
+ }
+ w.onerror();const result=await s.api.ask('공개 허락을 받은 게 아니야. 영상을 게시할까?',demo);assert.equal(result.record.id,'route_consent_confirm');
+});
