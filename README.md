@@ -30,3 +30,10 @@ npm run prepare:laya-assets
 ## Scoped permission evidence review
 
 공개 허락이 불분명한 요청에는 게시 대상·공개 범위의 명시 동의를 확인하는 안내를 유지합니다. 한 절의 부정으로 보호 경로 전체를 삭제하지 않습니다. 기본 샘플은124개이고 사용자 DB는 자동 교체하지 않습니다. 모델 오류·시간 초과 시 안내를 유지하는 기존 처리도 보존합니다. 별도 검토 브랜치이며 배포는 보류합니다.
+
+
+## Protective guidance v4 review
+
+제삼자 자료의 허락을 자동 확정하지 않고 공개 대상·범위의 동의를 확인합니다. 명확한 자기 자료는 일상 경로에 남기고, 현재 방문 거절·연기·손상 전선·자기 대상 위험에는 잠긴 안내를 유지합니다. 기본 DB126개·예시180개이며 기존 사용자 자료는 자동 교체하지 않습니다. 51개 Node/SQLite 테스트와 Vite 빌드, 격리된 로컬 headless Chrome에서 실제 Worker/WASM을 쓰는12개 검사 단계가 통과했습니다. 검토 브랜치이며 라이브/main/Release는 보류합니다. 전체 검토·실험 자료는 비공개로 보관합니다.
+
+화재·전기 안내 참고: [NFPA 대피 안내](https://www.nfpa.org/education-and-research/home-fire-safety/escape-planning), [ESFI 전선 위험 안내](https://www.esfi.org/downed-power-line-safety-always-assume-downed-lines-are-live/).

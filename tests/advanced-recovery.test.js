@@ -40,7 +40,11 @@ test('explicit protected routing cannot be released by Laya NONE, worker failure
 test('unconfirmed publication stays locked before a failed/expired model for imported data too',async()=>{
  const s=setup();const w=await s.load('laya');
  for(const records of [demo,[{id:'route_consent_confirm',text:'허락',answer:'그냥 공개해'}]]){
-  const result=await s.api.ask('공개 동의를 받지 않았어. 영상을 게시할까?',records);assert.equal(result.record.id,'route_consent_confirm');assert.match(result.record.answer,/명시적인 동의/);assert.equal(w.last.type,'load');
+  const result=await s.api.ask('공개 동의를 받지 않았어. 영상을 게시할까?',records);assert.equal(result.record.id,'route_consent_confirm');assert.match(result.record.answer,/동의한 범위/);assert.equal(w.last.type,'load');
  }
  w.onerror();const result=await s.api.ask('공개 허락을 받은 게 아니야. 영상을 게시할까?',demo);assert.equal(result.record.id,'route_consent_confirm');
+});
+test('fire and electric immediate guidance bypass head selection before and after worker failure',async()=>{
+ const s=setup();const w=await s.load('laya');for(const [question,id] of [['실내에 연기가 차. 물건을 챙길까?','route_safety_fire'],['손상된 전선이 벗겨졌어. 옮길까?','route_safety_electric']]){const r=await s.api.ask(question,demo);assert.equal(r.record.id,id);assert.equal(w.last.type,'load');}
+ w.onerror();assert.equal((await s.api.ask('실내에 불길이 번져. 어떻게 해?',demo)).record.id,'route_safety_fire');
 });

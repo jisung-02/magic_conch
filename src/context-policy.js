@@ -1,7 +1,7 @@
 // Transparent Korean clause/cue heuristics, not a general language parser.
 // No evaluation IDs or exact scenario sentences; ambiguous cases remain selective.
 import {intents,candidatesFor,chooseCompatible,normalize,routePrecedence} from './korean-retrieval.js';
-import {evidenceClauses,affirmativeCue,publicationEvidence} from './context-evidence.js';
+import {evidenceClauses,affirmativeCue,publicationEvidence,reportedRefusal,hazardEvidence,reflexiveHarmEvidence} from './context-evidence.js';
 const protectedRoutes=new Set(['self_harm','safety','consent','medical','financial','legal','career']);
 const precedence=routePrecedence.filter(r=>protectedRoutes.has(r));
 const compact=s=>normalize(s).toLowerCase().replace(/\s/g,'');
@@ -11,7 +11,7 @@ function permittedRecipient(question){
  const clauses=evidenceClauses(normalize(question)).map(compact);
  const permissions=new Set(),refusals=new Set();
  for(const clause of clauses){const subject=/^([가-힣]{2,6}?)(?:이는|은|는|이가|가|이)/.exec(clause);if(!subject||!/(연락|전화|메시지|문자|메일)/.test(clause))continue;
-  const actor=subject[1];if(affirmativeCue(clause,/싫|거절|원치않|하지말/))refusals.add(actor);else if(affirmativeCue(clause,/해달|기다|반겨|반갑|원해|좋아/))permissions.add(actor);
+  const actor=subject[1];if(reportedRefusal([clause]))refusals.add(actor);else if(affirmativeCue(clause,/해달|기다|반겨|반갑|원해|좋아/))permissions.add(actor);
  }
  const last=clauses.at(-1)||'';const target=/^([가-힣]{2,6}?)(?:에게|한테)(?:만)?(?:전화|연락|메시지|메일|문자|또|다시)/.exec(last);
  return target&&!/(모두|둘다|같이)/.test(last)&&permissions.has(target[1])&&!refusals.has(target[1])?target[1]:null;
@@ -25,8 +25,12 @@ export function analyzeContext(question){
  const transform=transformSyntax&&!activeDecision&&!activeHelp;
  if(transform)return {intent:'unclear_question',route:'unknown',scope:'unsupported_transform',locked:true,evidence:['문장 변환 요청'],excludedRoutes};
  const scoped=evidenceClauses(text);
+ const hazard=hazardEvidence(scoped);
+ if(hazard)return {intent:'physical_danger',route:'safety',locked:true,scope:hazard.scope,evidence:[hazard.evidence],excludedRoutes};
  // No text deletion or global protected-route exclusions. Scope evidence may
  // suppress one explicit cue, but every retrieved protective candidate remains.
+ const reflexive=reflexiveHarmEvidence(scoped);
+ if(reflexive)return {intent:'self_harm_concern',route:'self_harm',locked:true,scope:reflexive.scope,evidence:[reflexive.evidence],excludedRoutes};
  const figurative=/(농담|과장|비유|관용).{0,10}(말|표현|이야|임|야)|그냥과장/.test(raw)&&!/(농담|과장|비유).{0,5}(아니|않)/.test(raw);
  const quotedSelfHarm=/["“‘'](?:[^"”’']{0,35})(?:나를|죽고싶|자해)(?:[^"”’']{0,35})["”’']/.test(text);
  const actorMatch=/(?:^|[.!?,\s])([가-힣]{1,8}?)(?:이가|가|이)\s*나(?:를)?\s*.{0,8}(?:해치|해칠|해쳐|다치게)/.exec(normalize(question));
@@ -34,7 +38,7 @@ export function analyzeContext(question){
  const otherActor=actor&&!['나','내','저','제','스스로','자신'].includes(actor);
  const otherThreat=(!!otherActor||/(누가|그사람이|상대가|친구가|타인이|다른사람이).{0,16}나(?:를)?.{0,6}(해치|해칠|해쳐|다치|다칠)/.test(text))&&!quotedSelfHarm;
  if(otherThreat)return {intent:'physical_danger',route:'safety',locked:true,scope:'other_person_threat',evidence:[...evidence,'타인의 직접적인 위협'],excludedRoutes};
- const explicitHarm=scoped.some(clause=>affirmativeCue(clause,/(나를|자신을|스스로를?).{0,10}(해치|다치)|자해하고싶|죽고싶|살고싶지|살기싫|해칠.{0,6}(충동|생각|수단)/)||affirmativeCue(clause,/나해칠/)&&/(혼자|약꺼내|충동|스스로|버티기)/.test(clause)||affirmativeCue(clause,/(자해|자살).{0,10}(충동|생각|싶)/)&&/(지금|혼자|참기|어려|싶|나는|내가)/.test(clause));
+ const explicitHarm=scoped.some(clause=>affirmativeCue(clause,/(나를|자신을|스스로를?).{0,10}(해치|해칠|다치|다칠)|자해하고싶|죽고싶|살고싶지|살기싫|해칠.{0,6}(충동|생각|수단)/)||affirmativeCue(clause,/나해칠/)&&/(혼자|약꺼내|충동|스스로|버티기)/.test(clause)||affirmativeCue(clause,/(자해|자살).{0,10}(충동|생각|싶)/)&&/(지금|혼자|참기|어려|싶|나는|내가)/.test(clause));
  const helpingOther=/(친구|상대|사람|동료|가족).{0,45}(자해|자신을해치|나를해치|죽고싶)/.test(text)&&/(도와|돕|도움|어떻게|지금|혼자)/.test(text);
  if(explicitHarm||helpingOther){return {intent:'self_harm_concern',route:'self_harm',locked:true,scope:helpingOther?'helping_other':'active',evidence:[...evidence,'현재 해칠 의도/도움 요청'],excludedRoutes};}
  const gas=scoped.some(c=>affirmativeCue(c,/(가스).{0,12}(냄새|새|샌|샜|누출)|가연성|인화성/));
@@ -44,8 +48,8 @@ export function analyzeContext(question){
  const driving=scoped.some(c=>affirmativeCue(c,/운전(?:하려|할|해도|해서|하|은|을|으)?/));
  const drunk=alcohol&&driving;
  if(gas&&(dangerAction||/(지금|실내|집안|주방|부엌|냄새가나|샌)/.test(text))||water&&dangerAction||drunk)return {intent:'physical_danger',route:'safety',locked:true,scope:drunk?'danger_driving':gas?'danger_gas':'danger_water',evidence:[...evidence,'현재 위험과 행동의 결합'],excludedRoutes};
- const boundaryAction=/(연락|전화|메시지|문자|메일|초대|명단|참가|공개|게시|업로드|올리|올려|접촉|손잡|손올리|어깨|만지|사진|촬영|설득)/.test(text);
- const refusal=!permittedTarget&&scoped.some(c=>affirmativeCue(c,/(싫다|싫대|싫어|거절|원하지않|원치않|안된다고|차단|하지말|보내지말|올리지말)/));
+ const boundaryAction=/(연락|전화|메시지|문자|메일|초대|명단|참가|공개|게시|업로드|올리|올려|접촉|손잡|손올리|어깨|만지|사진|촬영|설득|방문|찾아가|찾아갈|찾아오|놀러|만남|만나|다가가)/.test(text);
+ const refusal=!permittedTarget&&reportedRefusal(scoped);
  if(boundaryAction&&refusal)return {intent:'consent_boundary',route:'consent',locked:true,scope:'active_action_boundary',evidence:[...evidence,'행동 범위와 명시 거절'],excludedRoutes};
  const clauses=scoped,tail=clauses.at(-1)||text;
  const everydayTail=/(연락|전화|간식|취미|산책|정리|색).{0,18}(할까|갈까|먹을까|고를|할지|볼까)/.test(tail)&&!/(약|복용|계약|대출|투자|자해|위험|가스)/.test(tail);
@@ -73,8 +77,8 @@ export function analyzeContext(question){
  const mind=/(속마음|마음|표정|말수|말없|반응|싫어하|좋아하|못마땅|별로라|질투)/.test(text)&&/(그사람|상대|친구|선배|동료|그애|나를|선배|그분|(?:옆|그|맞은).{0,8}분)/.test(text);
  if(mind)return {intent:'another_person_feelings',route:'uncertain',locked:true,scope:'other_person_state',evidence:[...evidence,'확인되지 않은 상대 상태'],excludedRoutes};
  const publication=publicationEvidence(scoped);
- if(publication&&!publication.certain)return {intent:'consent_boundary',route:'consent',scope:publication.scope,locked:true,evidence:[...evidence,'게시 대상·행동에 대한 명시 동의 미확인'],excludedRoutes};
- if(publication?.certain)return {intent:'task_start',route:'oracle',scope:publication.scope,locked:false,evidence:[...evidence,'같은 요청 절의 명시 공개 동의'],excludedRoutes};
+ if(publication&&!publication.ownOnly)return {intent:'consent_boundary',route:'consent',scope:publication.scope,locked:true,evidence:[...evidence,'게시 대상·행동에 대한 명시 동의 미확인'],excludedRoutes};
+ if(publication?.ownOnly)return {intent:'task_start',route:'oracle',scope:publication.scope,locked:false,evidence:[...evidence,'본인 자료와 본인 공개 공간의 명시 범위'],excludedRoutes};
  const shared=/(같이|함께|여럿|동행|다같이)/.test(text)&&/(취향|의견|입맛|먹을|먹는|먹을거|고르는사람)/.test(text)&&!/(같이|함께|여럿).{0,12}(아니|않)/.test(text);
  if(shared)return {intent:'shared_preference',route:'oracle',scope:'shared_choice',locked:false,evidence:[...evidence,'함께 고르는 상대와 취향'],excludedRoutes};
  const equalConditions=/(가격|품질|속지|성능|조건).{0,12}(같|동일)/.test(text)&&/(색|표지|디자인|모양)/.test(text);
@@ -112,7 +116,7 @@ export function planContextAnswer(question,ranked,records,{variant='full',lexica
  const intent=chosen.intent;let record=chooseCompatible(intent,records),candidates=candidatesFor(intent,records);
  if(variant!=='hierarchy'){
   const preferred={start_hobby:/(무료|체험)/.test(question)?'hobby_trial':null,casual_contact:'contact_short',light_food_choice:'food_taste',small_purchase:'purchase_small',preference_choice:'preference_equal',shared_preference:'shared_taste',missing_details:context.scope==='missing_purchase'?'clarify_purchase':'clarify_conditions'}[intent.id];
-  const scopeID={unsupported_transform:'route_scope',publication_permission_unconfirmed:'route_consent_confirm',helping_other:'route_self_harm_other',danger_gas:'route_safety_gas',danger_water:'route_safety_water',danger_driving:'route_safety_driving',other_person_threat:'route_safety_threat'}[context.scope]||null;
+  const scopeID={unsupported_transform:'route_scope',publication_permission_unconfirmed:'route_consent_confirm',helping_other:'route_self_harm_other',danger_fire:'route_safety_fire',danger_electric:'route_safety_electric',danger_gas:'route_safety_gas',danger_water:'route_safety_water',danger_driving:'route_safety_driving',other_person_threat:'route_safety_threat'}[context.scope]||null;
   if(scopeID||preferred){const better=records.find(r=>r.id===(scopeID||preferred));if(better){record=better;candidates=[better,...candidates.filter(r=>r.id!==better.id)].slice(0,8);}}
  }
  // A protected/uncertain/factual/scope response is a policy decision, not a Laya choice.
